@@ -13,8 +13,8 @@ Install
 The server should just boot up if you did everything correctly
 
 To see the webpage
-1.Navigate to localhost:8888 -- Just a generic homescreen
-2.Navigate to localhost:8888/overview --to demonstrate routing
+1. Navigate to localhost:8888 -- Just a generic homescreen
+2. Navigate to localhost:8888/overview --to demonstrate routing
 
 
 Feel free to add to this since i know we are all running different OS
