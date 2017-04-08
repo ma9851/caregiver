@@ -1,23 +1,35 @@
 var express = require('express');
-var router = express.Router();
+var test_data = require('./model/homeTestData');
 var bodyParser = require('body-parser');
-
-
 var app = express();
+var router = express.Router();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router);
 app.use(express.static('./html'));
-var test_data = require('./model/homeTestData');
+app.use(express.static('./images'));
+app.use(express.static('./CSS'));
 
-// This responds with "Hello World" on the homepage
+
+//-------ROUTING-------//
 router.get('/', function (req, res) {
     console.log("Got a GET request for the homepage");
-    res.send("HELLO WORLD");
+    res.sendfile('./html/landing.html');
 });
 
-router.get('/login',function(req,res){
-    res.sendfile('./html/loginForm.html')
+router.get('/landing',function(req,res){
+    res.sendfile('./html/landing.html')
 });
+
+router.get('/nav',function(req,res){
+    res.sendfile('./html/navbar.html')
+});
+
+router.get('/overview',function(req,res){
+    res.sendfile('./html/caregiverOverview.html')
+});
+
+
+//-------POST REQUESTS-------//
 
 app.post('/loginForm', function (req, res) {
     response = {
@@ -26,7 +38,7 @@ app.post('/loginForm', function (req, res) {
     };
 
     if(response.username == 'caregiver' && response.password == 'password'){
-        res.sendfile('./html/caregiverOverview.html')
+        res.redirect('/overview')
     }else{
         res.send('Login Failed')
     }
@@ -54,8 +66,9 @@ app.post('/removePatient',function(req,res){
 });
 
 
+
+//-------SERVER LISTENING-------//
+
 app.listen(8888, function () {
     console.log("Example app listening at http://localhost:8888");
 });
-
-module.exports = app;
