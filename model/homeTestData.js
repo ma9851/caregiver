@@ -10,10 +10,18 @@ var thelist = function() {
 };
 
 var patientlist = function() {
-    var objJson = {
-        "patients": ["John Doe","Jane Doe","Bob","dan","phil"]
-    };
-    return objJson;
+    var patientList= ["John Doe","Jane Doe","Bob","dan","phil"];
+    return patientList;
 };
+
+var loginUsers = function(){
+    var loginAccounts = {
+        "caregivers" : [{'username':'caregiver1','password':'password1'}],
+        "patients":[{'username':'patient0','password':'password0'}]
+    };
+    return loginAccounts;
+};
+
 exports.teamlist = thelist();
 exports.patientList = patientlist();
+exports.loginUsers = loginUsers();
