@@ -21,7 +21,7 @@ router.get('/landing',function(req,res){
 });
 
 router.get('/overview',function(req,res){
-    res.sendfile('./html/caregiverOverview.html')
+    res.sendfile('./html/caregiver-overview.html')
 });
 
 
