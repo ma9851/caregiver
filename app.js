@@ -20,10 +20,6 @@ router.get('/landing',function(req,res){
     res.sendfile('./html/landing.html')
 });
 
-router.get('/nav',function(req,res){
-    res.sendfile('./html/navbar.html')
-});
-
 router.get('/overview',function(req,res){
     res.sendfile('./html/caregiverOverview.html')
 });

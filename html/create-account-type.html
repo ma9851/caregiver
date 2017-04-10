@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Page Description">
+    <meta name="author" content="Team Caregiver">
+    <title>Create Account Type</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/font-awesome.min.css" rel="stylesheet">
+    <link href="../CSS/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respbootstrapd.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respbootstrapd.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Caregiver</h1>
+    </div>
+    <div class="container text-center">
+        <h2>Choose your Account Type</h2>
+        <br/>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <button type="button" class="btn btn-primary btn-lg">Caregiver</button>
+            <p>
+                This type of account is for the home health aid and nurses alike. This will allow you to view a list of
+                your patients and log your daily task for them.
+            </p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <button type="button" class="btn btn-default btn-lg disabled">Patient</button>
+            <p>
+                This type of account is for the patient who would like a place to connect to their caregiver, even when
+                they may not be around.
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" class="btn btn-warning btn-lg">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="includefooter"></div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bootstrap/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $("#includefooter").load("footer.html");
+    });
+</script>
+</body>
+</html>

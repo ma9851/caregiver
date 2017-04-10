@@ -1,0 +1,26 @@
+{
+  "name": "caregiver",
+  "version": "1.0.0",
+  "description": "caregiver application for swen 444",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ma9851/caregiver.git"
+  },
+  "keywords": [
+    "caregiver"
+  ],
+  "author": "the other guys",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ma9851/caregiver/issues"
+  },
+  "homepage": "https://github.com/ma9851/caregiver#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
+}
