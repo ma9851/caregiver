@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Page Description">
     <meta name="author" content="Team Caregiver">
-    <title>Caregiver</title>
+    <title>Account Creation Type</title>
 
     <!-- Bootstrap -->
     <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -25,38 +25,28 @@
 
 <div class="container">
     <div class="page-header">
-        <h1>Welcome to Caregiver</h1>
+        <h1>Caregiver</h1>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-        <div class="jumbotron">
-            <div class="container">
-                <p> We look forward to giving you an easy to use connection to your caregiver, patient or family. Our
-                    goal is to allow patients and caregivers alike a way to communicate and organize their daily
-                    affairs. If you already have an account, log in and get connected. If you would like to sign up,
-                    please click sign up on the right and fill out a short form to allow us to begin your caregiver
-                    experience.</p>
-            </div>
+    <div class="container text-center">
+        <h2>Choose your Account Type</h2>
+        <br/>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <button type="button" class="btn btn-primary btn-lg">Caregiver</button>
+            <p>
+                This type of account is for the home health aid and nurses alike. This will allow you to view a list of
+                your patients and log your daily task for them.
+            </p>
         </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-        <form action="" method="post" role="form">
-            <legend>Sign In</legend>
-
-            <div class="form-group">
-                <label for="u">Username:</label>
-                <input type="text" class="form-control" name="" id="u" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label for="p">Password:</label>
-                <input type="password" class="form-control" name="" id="p" placeholder="Password">
-            </div>
-
-            <button type="submit" class="btn btn-block btn-primary">Sign In</button>
-
-        </form>
-        <br>
-        <p>New User:</p>
-        <button href="#" class="btn btn-block button-link">Create Account</button>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <button type="button" class="btn btn-default btn-lg disabled">Patient</button>
+            <p>
+                This type of account is for the patient who would like a place to connect to their caregiver, even when
+                they may not be around.
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" class="btn btn-warning btn-lg">Cancel</button>
+        </div>
     </div>
 </div>
 
