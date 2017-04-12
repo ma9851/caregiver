@@ -17,11 +17,35 @@ router.get('/', function (req, res) {
 });
 
 router.get('/landing',function(req,res){
-    res.sendfile('./html/landing.html')
+    res.sendfile('./html/landing.html');
 });
 
 router.get('/overview',function(req,res){
     res.sendfile('./html/caregiver-overview.html')
+});
+
+router.get('/profile',function(req,res){
+    res.sendfile('./html/profile.html');
+});
+
+router.get('/messages',function(req,res){
+    res.sendfile('./html/caregiver-messages.html');
+});
+
+router.get('/patient-list',function(req,res){
+    res.sendfile('./html/caregiver-patient-list.html');
+});
+
+router.get('/schedule',function(req,res){
+    res.sendfile('./html/caregiver-schedule.html');
+});
+
+router.get('/schedule',function(req,res){
+    res.sendfile('./html/caregiver-schedule.html');
+});
+
+router.get('/emergency',function(req,res){
+    res.sendfile('./html/caregiver-emergency.html');
 });
 
 
