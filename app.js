@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router);
 app.use(express.static('./html'));
 app.use(express.static('./images'));
-app.use(express.static('./CSS'));
+app.use(express.static('./css'));
 
 
 //-------ROUTING-------//
