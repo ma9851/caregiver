@@ -12,7 +12,6 @@
     <link href="//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="colors.css" rel="stylesheet">
-    <link href="extra.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -20,18 +19,56 @@
     <![endif]-->
 </head>
 <body>
-<div id="includenavbar"></div>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Caregiver</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li id="page-overview" class="active"><a href="/overview"><i class="fa fa-home fa-lg"></i></a></li>
+                <li id="page-profile"><a href="/profile">Profile</a></li>
+                <li id="page-messages"><a href="/messages">Messages</a></li>
+                <li id="page-patient-list"><a href="/patient-list">Patient List</a></li>
+                <li id="page-schedule"><a href="/schedule">Schedule</a></li>
+                <li id="page-notifications"><a href=""><i class="fa fa-bell"></i></a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="list-group-item-danger"><a href="/emergency">Emergency</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
 
 <div class="container">
     <div class="hidden-xs col-sm-2 col-md-2 col-lg-2 text-center">
         <img src="logo.png" class="img-responsive" height="auto" width="100%" alt="Profile Image">
         <h2>Sarah</h2>
-        <button href="#" class="btn btn-block btn-primary">Profile</button>
+        <a href="/profile">
+            <button class="btn btn-block btn-primary">Profile</button>
+        </a>
     </div>
     <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
         <!-- Unread Messages Widget-->
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 well" style="height: 200px;">
-            <h2 style="margin-top:0">Patient List</h2>
+            <h2 class="text-center" style="margin-top:0">Patient List</h2>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="overflow-y:scroll; height:95px">
                 <ul style="list-style-type:none; padding-left: 0;">
                     <li>
@@ -42,14 +79,16 @@
                     </li>
                 </ul>
             </div>
-            <button href="#" class="btn btn-block btn-primary">
-                Inbox
-            </button>
+            <a href="/messages">
+                <button class="btn btn-block btn-primary">
+                    Inbox
+                </button>
+            </a>
         </div>
         <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
         <!-- Patient List Widget-->
         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 well" style="height: 200px;">
-            <h2 style="margin-top:0">Patient List</h2>
+            <h2 class="text-center" style="margin-top:0">Patient List</h2>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="overflow-y:scroll; height:95px">
                 <ul style="list-style-type:none; padding-left: 0;">
                     <li>
@@ -74,19 +113,21 @@
                     </li>
                 </ul>
             </div>
-            <button href="#" class="btn btn-block btn-primary">
-                Add New Patient
-            </button>
+            <a href="">
+                <button class="btn btn-block btn-primary">
+                    Add New Patient
+                </button>
+            </a>
         </div>
         <!-- Calendar -->
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 well" style="height: 400px;">
-            <h2 style="margin-top:0">Calendar</h2>
+            <h2 class="text-center" style="margin-top:0">Calendar</h2>
             <!-- Going to use fullcalendar.io-->
         </div>
         <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
         <!-- Tasks -->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 well" style="height: 400px;">
-            <h2 style="margin-top:0">Today's Events</h2>
+            <h2 class="text-center" style="margin-top:0">Today's Events</h2>
             <div style="overflow-y:scroll; height:395px">
                 <table class="table table-condensed">
                     <tr>
@@ -116,7 +157,6 @@
 <script src="//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js"></script>
 <script>
     $(function () {
-        $("#includenavbar").load("caregiver-navbar.html");
         $("#includefooter").load("footer.html");
     });
 </script>
