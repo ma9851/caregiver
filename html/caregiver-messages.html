@@ -58,61 +58,66 @@
 </nav>
 
 <div class="container">
-    <!-- Conversation list -->
-    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 well" style="height: 600px;">
-        <h3 style="margin-top:0">Conversations</h3>
-        <div style="overflow-y:scroll; height:525px">
-            <div id="conversation-list" class="list-group">
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading"><i class="fa fa-plus-square-o fa-lg"></i> New Conversation</h4>
-                    <p class="list-group-item-text"></p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading"><img src="logo20.png"> John Doe</h4>
-                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
-                        eget risus varius blandit.</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading"><img src="logo20.png"> Karry Forya</h4>
-                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
-                        eget risus varius blandit.</p>
-                </a>
+    <div class="row">
+        <!-- Conversation list -->
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 well" style="height: 600px;">
+            <h3 style="margin-top:0">Conversations</h3>
+            <div style="overflow-y:scroll; height:525px">
+                <div id="conversation-list" class="list-group">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading"><i class="fa fa-plus-square-o fa-lg"></i> New Conversation
+                        </h4>
+                        <p class="list-group-item-text"></p>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading"><img src="logo20.png"> John Doe</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                            diam
+                            eget risus varius blandit.</p>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading"><img src="logo20.png"> Karry Forya</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                            diam
+                            eget risus varius blandit.</p>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
-    <!-- Contents of conversation-->
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 well" style="height: 600px;">
-        <div class="panel panel-default">
-            <div class="panel-heading"><span id="active-conversation-name">None</span></div>
-            <div id="conversation" style="overflow-y:scroll; height:475px">
-                <div class="message-bubble">
-                    <p class="text-muted">Matt Townsen</p>
-                    <p>Test message</p>
+        <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+        <!-- Contents of conversation-->
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 well" style="height: 600px;">
+            <div class="panel panel-default">
+                <div class="panel-heading"><span id="active-conversation-name">None</span></div>
+                <div id="conversation" style="overflow-y:scroll; height:475px">
+                    <div class="message-bubble">
+                        <p class="text-muted">Matt Townsen</p>
+                        <p>Test message</p>
+                    </div>
+                    <div class="message-bubble">
+                        <p class="text-muted">Matt Townsen</p>
+                        <p>Test message</p>
+                    </div>
+                    <div class="message-bubble">
+                        <p class="text-muted">Matt Townsen</p>
+                        <p>Test message</p>
+                    </div>
+                    <div class="message-bubble">
+                        <p class="text-muted">Matt Townsen</p>
+                        <p>Test message</p>
+                    </div>
+                    <div class="message-bubble">
+                        <p class="text-muted">Matt Townsen</p>
+                        <p>Test message</p>
+                    </div>
                 </div>
-                <div class="message-bubble">
-                    <p class="text-muted">Matt Townsen</p>
-                    <p>Test message</p>
-                </div>
-                <div class="message-bubble">
-                    <p class="text-muted">Matt Townsen</p>
-                    <p>Test message</p>
-                </div>
-                <div class="message-bubble">
-                    <p class="text-muted">Matt Townsen</p>
-                    <p>Test message</p>
-                </div>
-                <div class="message-bubble">
-                    <p class="text-muted">Matt Townsen</p>
-                    <p>Test message</p>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Message...">
-                    <span class="input-group-btn">
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Message...">
+                        <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Send</button>
                     </span>
+                    </div>
                 </div>
             </div>
         </div>
