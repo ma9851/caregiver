@@ -60,16 +60,41 @@ router.get('/emergency',function(req,res){
 //-------POST REQUESTS-------//
 
 app.post('/loginForm', function (req, res) {
-    response = {
+    var response = {
         username:req.body.username,
         password:req.body.password
     };
 
-    if(response.username == 'caregiver' && response.password == 'password'){
+    var caregiverAccounts = test_data.loginUsers;
+    console.log(caregiverAccounts);
+
+
+    for(var accountIndex in caregiverAccounts) {
+        var account = caregiverAccounts[accountIndex];
+        if (response.username == account[0] && response.password == account[1]) {
+            var login = true;
+            break;
+        }
+    }
+    if(login){
         res.redirect('/overview')
     }else{
-        res.send('Login Failed')
+        res.redirect('/')
     }
+
+
+});
+
+app.post('/createNewCaregiver',function(req,res){
+   var response = {
+       username:req.body.username,
+       password:req.body.password
+   };
+
+   var newCaregiver = [response.username,response.password];
+    test_data.loginUsers.push(newCaregiver);
+    res.redirect('/');
+
 });
 
 app.post('/addPatient',function(req,res){

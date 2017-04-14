@@ -1,27 +1,15 @@
 
-//Some Dummy Data
-var thelist = function() {
-    var objJson = {
-        "GroupName": "The Other Guys",
-        "count": 5,
-        "members": ["mike","doug","george","brian","justin"]
-    };
-    return objJson;
-};
-
 var patientlist = function() {
-    var patientList= ["John Doe","Jane Doe","Bob","dan","phil"];
+    var patientList= ["John Doe","Jane Doe","Bill Smith","Elvis Pretzel","John Lemon"];
     return patientList;
 };
 
 var loginUsers = function(){
-    var loginAccounts = {
-        "caregivers" : [{'username':'caregiver1','password':'password1'}],
-        "patients":[{'username':'patient0','password':'password0'}]
-    };
-    return loginAccounts;
+    var caregiverLogins = [['caregiver','password'],['caregiver1','password1']];
+    return caregiverLogins;
 };
 
-exports.teamlist = thelist();
+
+
 exports.patientList = patientlist();
 exports.loginUsers = loginUsers();
