@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Page Description">
     <meta name="author" content="Team Caregiver">
-    <title>Schedule</title>
+    <title>Link Patient</title>
 
     <link href="//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -40,8 +40,8 @@
                 <li id="page-overview"><a href="/overview"><i class="fa fa-home fa-lg"></i></a></li>
                 <li id="page-profile"><a href="/profile">Profile</a></li>
                 <li id="page-messages"><a href="/messages">Messages</a></li>
-                <li id="page-patient-list"><a href="/patient-list">Patient List</a></li>
-                <li id="page-schedule" class="active"><a href="/schedule">Schedule</a></li>
+                <li id="page-patient-list" class="active"><a href="/patient/all">Patient List</a></li>
+                <li id="page-schedule"><a href="/schedule">Schedule</a></li>
                 <li id="page-notifications"><a href=""><i class="fa fa-bell"></i></a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
@@ -58,7 +58,45 @@
 </nav>
 
 <div class="container">
-    This is your schedule page
+    <form action="" method="post" role="form">
+        <legend>Create a New Patient Account</legend>
+
+        <div class="form-group">
+            <div class="row">
+                <label for="fname" class="col-sm-2 control-label">First name</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="fname" placeholder="First Name" required>
+                </div>
+                <label for="lname" class="col-sm-2 control-label">Last name</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="lname" placeholder="Last Name" required>
+                </div>
+            </div>
+            <div class="row">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-4">
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                <label for="dob" class="col-sm-2 control-label">Date of Birth</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control" id="dob" required>
+                </div>
+            </div>
+            <div class="row">
+                <label for="phone" class="col-sm-2 control-label">Phone Number</label>
+                <div class="col-sm-4">
+                    <input type="tel" class="form-control" id="phone" placeholder="XXX XXX XXXX" required>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/patient/all">
+                <button type="button" class="btn btn-default">Cancel</button>
+            </a>
+        </div>
+    </form>
 </div>
 
 <div id="includefooter"></div>

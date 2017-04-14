@@ -3,7 +3,7 @@ var test_data = require('./model/homeTestData');
 var bodyParser = require('body-parser');
 var app = express();
 var router = express.Router();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(router);
 app.use(express.static('./html'));
 app.use(express.static('./images'));
@@ -16,44 +16,49 @@ router.get('/', function (req, res) {
     res.sendfile('./html/landing.html');
 });
 
-router.get('/landing',function(req,res){
+router.get('/landing', function (req, res) {
     res.sendfile('./html/landing.html');
 });
 
-router.get('/new-user-type',function(req,res){
+router.get('/new-user-type', function (req, res) {
     res.sendfile('./html/create-account-type.html');
 });
 
-router.get('/caregiver-create',function(req,res){
+router.get('/create-caregiver', function (req, res) {
     res.sendfile('./html/create-account-caregiver-form.html');
 });
 
-router.get('/overview',function(req,res){
-    res.sendfile('./html/caregiver-overview.html')
+router.get('/overview', function (req, res) {
+    res.sendfile('./html/caregiver/overview.html')
 });
 
-router.get('/profile',function(req,res){
+router.get('/profile', function (req, res) {
     res.sendfile('./html/profile.html');
 });
 
-router.get('/messages',function(req,res){
-    res.sendfile('./html/caregiver-messages.html');
+router.get('/messages', function (req, res) {
+    res.sendfile('./html/caregiver/messages.html');
 });
 
-router.get('/patient-list',function(req,res){
-    res.sendfile('./html/caregiver-patient-list.html');
+router.get('/schedule', function (req, res) {
+    res.sendfile('./html/caregiver/schedule.html');
 });
 
-router.get('/schedule',function(req,res){
-    res.sendfile('./html/caregiver-schedule.html');
+router.get('/emergency', function (req, res) {
+    res.sendfile('./html/caregiver/emergency.html');
 });
 
-router.get('/schedule',function(req,res){
-    res.sendfile('./html/caregiver-schedule.html');
+router.get('/patient/all', function (req, res) {
+    res.sendfile('./html/caregiver/patient-list.html');
 });
 
-router.get('/emergency',function(req,res){
-    res.sendfile('./html/caregiver-emergency.html');
+router.get('/patient/link', function (req, res) {
+    res.sendfile('./html/caregiver/link-patient.html');
+});
+
+router.get(/^\/patient\/(\w+)$/, function (req, res) {
+    var name = req.params[0];
+    res.sendfile('./html/patients/' + name + '.html');
 });
 
 
@@ -61,28 +66,28 @@ router.get('/emergency',function(req,res){
 
 app.post('/loginForm', function (req, res) {
     response = {
-        username:req.body.username,
-        password:req.body.password
+        username: req.body.username,
+        password: req.body.password
     };
 
-    if(response.username == 'caregiver' && response.password == 'password'){
+    if (response.username == 'caregiver' && response.password == 'password') {
         res.redirect('/overview')
-    }else{
+    } else {
         res.send('Login Failed')
     }
 });
 
-app.post('/addPatient',function(req,res){
-    var response ={
-      name:req.body.username
+app.post('/addPatient', function (req, res) {
+    var response = {
+        name: req.body.username
     };
     test_data.patientList.push(response.name);
     res.send(test_data.patientList)
 });
 
-app.post('/removePatient',function(req,res){
-    var response ={
-        name:req.body.username
+app.post('/removePatient', function (req, res) {
+    var response = {
+        name: req.body.username
     };
     var index = test_data.patientList.indexOf(response.name);
 
@@ -92,7 +97,6 @@ app.post('/removePatient',function(req,res){
 
     res.send(test_data.patientList)
 });
-
 
 
 //-------SERVER LISTENING-------//

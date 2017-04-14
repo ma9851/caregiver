@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Page Description">
     <meta name="author" content="Team Caregiver">
-    <title>Profile</title>
+    <title>Emergency</title>
 
     <link href="//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                 <li id="page-overview"><a href="/overview"><i class="fa fa-home fa-lg"></i></a></li>
-                <li id="page-profile" class="active"><a href="/profile">Profile</a></li>
+                <li id="page-profile"><a href="/profile">Profile</a></li>
                 <li id="page-messages"><a href="/messages">Messages</a></li>
                 <li id="page-patient-list"><a href="/patient/all">Patient List</a></li>
                 <li id="page-schedule"><a href="/schedule">Schedule</a></li>
@@ -58,7 +58,40 @@
 </nav>
 
 <div class="container">
-   This is your profile
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form action="" method="post" role="form">
+                <legend>Emergency Alert Entry Screen</legend>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="name">
+                                <option value="JohnDoe">John Doe</option>
+                                <option value="JaneDoe">Jane Doe</option>
+                                <option value="BobSmith">Bob Smith</option>
+                                <option value="KarryForya">Karry Forya</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="reason" class="col-sm-2 control-label">Reason</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="reason" placeholder="Reason">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-default">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <div id="includefooter"></div>
