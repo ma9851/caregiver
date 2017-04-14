@@ -20,6 +20,14 @@ router.get('/landing',function(req,res){
     res.sendfile('./html/landing.html');
 });
 
+router.get('/new-user-type',function(req,res){
+    res.sendfile('./html/create-account-type.html');
+});
+
+router.get('/caregiver-create',function(req,res){
+    res.sendfile('./html/create-account-caregiver-form.html');
+});
+
 router.get('/overview',function(req,res){
     res.sendfile('./html/caregiver-overview.html')
 });
