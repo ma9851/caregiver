@@ -3,12 +3,14 @@ var test_data = require('./model/homeTestData');
 var bodyParser = require('body-parser');
 var app = express();
 var router = express.Router();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router);
+
 app.use(express.static('./html'));
 app.use(express.static('./images'));
 app.use(express.static('./css'));
-
+app.use(express.static('./model'));
 
 //-------ROUTING-------//
 router.get('/', function (req, res) {
@@ -66,8 +68,6 @@ app.post('/loginForm', function (req, res) {
     };
 
     var caregiverAccounts = test_data.loginUsers;
-    console.log(caregiverAccounts);
-
 
     for(var accountIndex in caregiverAccounts) {
         var account = caregiverAccounts[accountIndex];
@@ -97,28 +97,17 @@ app.post('/createNewCaregiver',function(req,res){
 
 });
 
-app.post('/addPatient',function(req,res){
-    var response ={
-      name:req.body.username
+app.post('/emergencySubmit',function(req,res){
+    var response = {
+      name:req.body.name,
+      reason:req.body.reason
     };
-    test_data.patientList.push(response.name);
-    res.send(test_data.patientList)
+    res.send('You have declared an emergency for '+response.name+' for the following reason: '+response.reason )
 });
 
-app.post('/removePatient',function(req,res){
-    var response ={
-        name:req.body.username
-    };
-    var index = test_data.patientList.indexOf(response.name);
-
-    if (index > -1) {
-        test_data.patientList.splice(index, 1);
-    }
-
-    res.send(test_data.patientList)
+app.post('/emergencyCancel',function(req,res){
+   res.redirect('/')
 });
-
-
 
 //-------SERVER LISTENING-------//
 

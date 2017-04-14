@@ -13,10 +13,10 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="colors.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="testData.js"></script>
+
 </head>
 <body>
 
@@ -70,7 +70,7 @@
             <div class="row">
                 <!-- Unread Messages Widget-->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 well" style="height: 200px;">
-                    <h2 class="text-center" style="margin-top:0">Patient List</h2>
+                    <h2 class="text-center" style="margin-top:0">Messages</h2>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="overflow-y:scroll; height:95px">
                         <ul style="list-style-type:none; padding-left: 0;">
                             <li>
@@ -92,27 +92,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 well" style="height: 200px;">
                     <h2 class="text-center" style="margin-top:0">Patient List</h2>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="overflow-y:scroll; height:95px">
-                        <ul style="list-style-type:none; padding-left: 0;">
-                            <li>
-                                <a href="#">
-                                    <img src="logo20.png"> John Doe
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="logo20.png"> Jane Doe
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="logo20.png"> Bob Smith
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="logo20.png"> Karry Forya
-                                </a>
-                            </li>
+                        <ul style="list-style-type:none; padding-left: 0;" id="patientList">
+
                         </ul>
                     </div>
                     <a href="">
@@ -165,5 +146,33 @@
         $("#includefooter").load("footer.html");
     });
 </script>
+
+<script>
+    var patientList = patientListRAW;
+
+    var myList = document.getElementById("patientList");
+
+    for (var i = 0; i < patientList.length; i++) {
+
+        var patientName = patientList[i];
+
+        var listItem = document.createElement("li");
+
+        var itemLink = document.createElement("a");
+        itemLink.setAttribute("href",'#');
+
+        var itemImg = document.createElement("img");
+        itemImg.setAttribute("src","profile3.png");
+
+        itemLink.appendChild(itemImg);
+        listItem.appendChild(itemLink);
+
+        itemLink.append(patientName);
+        listItem.appendChild(itemLink);
+        myList.appendChild(listItem);
+    }
+
+</script>
+
 </body>
 </html>
