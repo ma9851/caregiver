@@ -33,7 +33,7 @@ router.get('/overview', function (req, res) {
 });
 
 router.get('/profile', function (req, res) {
-    res.sendfile('./html/profile.html');
+    res.sendfile('./html/caregiver/profile.html');
 });
 
 router.get('/messages', function (req, res) {
