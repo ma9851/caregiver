@@ -21,11 +21,11 @@ router.get('/landing', function (req, res) {
 });
 
 router.get('/new-user-type', function (req, res) {
-    res.sendfile('./html/create-account-type.html');
+    res.sendfile('./html/create-account/type.html');
 });
 
 router.get('/create-caregiver', function (req, res) {
-    res.sendfile('./html/create-account-caregiver-form.html');
+    res.sendfile('./html/create-account/caregiver-form.html');
 });
 
 router.get('/overview', function (req, res) {
@@ -57,7 +57,7 @@ router.get('/patient/link', function (req, res) {
 });
 
 router.get('/patient/new', function (req, res) {
-    res.sendfile('./html/create-account-patient-form.html');
+    res.sendfile('./html/caregiver/patient-form.html');
 });
 
 router.get(/^\/patient\/(\w+)\/profile$/, function (req, res) {
