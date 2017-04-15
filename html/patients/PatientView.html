@@ -96,13 +96,16 @@
 <script src="//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js"></script>
 <script>
     $(function () {
-        var jsonSTRING = '{"KarryForya":{"id":"KarryForya","name":"Karry Forya","date of birth":"03/22/1992","tasks":[{"name":"Dinner","status":true},{"name":"Give Night Medication","status":false},{"name":"Breakfast","status":true}]},"JohnDoe":{"id":"JohnDoe","name":"John Doe","date of birth":"03/22/1992","tasks":[{"name":"Dinner","status":true},{"name":"Give Night Medication","status":true},{"name":"Breakfast","status":false}]}}';
+        var jsonSTRING = '{"KarryForya":{"id":"KarryForya","name":"Karry Forya","date of birth":"03/22/1992","tasks":' +
+            '[{"name":"Dinner","status":true},{"name":"Give Night Medication","status":false},{"name":"Breakfast","st' +
+            'atus":true}],"details":[{"name":"Address","value":"1 Example Rd"},{"name":"Phone","value":"555555555"}]}' +
+            ',"JohnDoe":{"id":"JohnDoe","name":"John Doe","date of birth":"03/22/1992","tasks":[{"name":"Dinner","sta' +
+            'tus":true},{"name":"Give Night Medication","status":true},{"name":"Breakfast","status":false}],"details"' +
+            ':[{"name":"Address","value":"1 Example Rd"},{"name":"Phone","value":"555555555"}]}}';
         var allPatientInfo = JSON.parse('[' + jsonSTRING + ']');
 
         var patientID = window.location.toString().match(/\/patient\/(\w+)/g).toString().replace("/patient/", "");
-        console.log(allPatientInfo);
         var patientInfo = allPatientInfo[0][patientID];
-        console.log(patientInfo);
 
         document.title = patientInfo.name;
         var x = document.getElementsByClassName("patientName");

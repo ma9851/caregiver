@@ -60,8 +60,12 @@ router.get('/patient/new', function (req, res) {
     res.sendfile('./html/create-account-patient-form.html');
 });
 
-router.get(/^\/patient\/(\w+)$/, function (req, res) {
+router.get(/^\/patient\/(\w+)\/profile$/, function (req, res) {
     res.sendfile('./html/patients/PatientProfile.html');
+});
+
+router.get(/^\/patient\/(\w+)$/, function (req, res) {
+    res.sendfile('./html/patients/PatientView.html');
 });
 
 
