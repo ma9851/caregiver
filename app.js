@@ -61,8 +61,7 @@ router.get('/patient/new', function (req, res) {
 });
 
 router.get(/^\/patient\/(\w+)$/, function (req, res) {
-    var name = req.params[0];
-    res.sendfile('./html/patients/' + name + '.html');
+    res.sendfile('./html/patients/PatientProfile.html');
 });
 
 
