@@ -61,11 +61,11 @@ router.get('/patient/new', function (req, res) {
 });
 
 router.get(/^\/patient\/(\w+)\/profile$/, function (req, res) {
-    res.sendfile('./html/patients/PatientProfile.html');
+    res.sendfile('./html/patients/profile.html');
 });
 
 router.get(/^\/patient\/(\w+)$/, function (req, res) {
-    res.sendfile('./html/patients/PatientView.html');
+    res.sendfile('./html/patients/view.html');
 });
 
 
