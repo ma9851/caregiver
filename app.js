@@ -3,12 +3,14 @@ var test_data = require('./model/homeTestData');
 var bodyParser = require('body-parser');
 var app = express();
 var router = express.Router();
-app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router);
+
 app.use(express.static('./html'));
 app.use(express.static('./images'));
 app.use(express.static('./css'));
-
+app.use(express.static('./model'));
 
 //-------ROUTING-------//
 router.get('/', function (req, res) {
@@ -57,7 +59,7 @@ router.get('/patient/link', function (req, res) {
 });
 
 router.get('/patient/new', function (req, res) {
-    res.sendfile('./html/caregiver/patient-form.html');
+    res.sendfile('./html/create-account/patient-form.html');
 });
 
 router.get(/^\/patient\/(\w+)\/profile$/, function (req, res) {
@@ -72,39 +74,54 @@ router.get(/^\/patient\/(\w+)$/, function (req, res) {
 //-------POST REQUESTS-------//
 
 app.post('/loginForm', function (req, res) {
-    response = {
-        username: req.body.username,
-        password: req.body.password
+    var response = {
+        username:req.body.username,
+        password:req.body.password
     };
 
-    if (response.username == 'caregiver' && response.password == 'password') {
+    var caregiverAccounts = test_data.loginUsers;
+
+    for(var accountIndex in caregiverAccounts) {
+        var account = caregiverAccounts[accountIndex];
+        if (response.username == account[0] && response.password == account[1]) {
+            var login = true;
+            break;
+        }
+    }
+    if(login){
         res.redirect('/overview')
-    } else {
-        res.send('Login Failed')
-    }
-});
-
-app.post('/addPatient', function (req, res) {
-    var response = {
-        name: req.body.username
-    };
-    test_data.patientList.push(response.name);
-    res.send(test_data.patientList)
-});
-
-app.post('/removePatient', function (req, res) {
-    var response = {
-        name: req.body.username
-    };
-    var index = test_data.patientList.indexOf(response.name);
-
-    if (index > -1) {
-        test_data.patientList.splice(index, 1);
+    }else{
+        res.redirect('/')
     }
 
-    res.send(test_data.patientList)
+
 });
 
+app.post('/createNewCaregiver',function(req,res){
+   var response = {
+       username:req.body.username,
+       password:req.body.password
+   };
+
+   var newCaregiver = [response.username,response.password];
+    test_data.loginUsers.push(newCaregiver);
+    res.redirect('/');
+
+});
+
+app.post('/emergencySubmit',function(req,res){
+    var response = {
+      name:req.body.name,
+      reason:req.body.reason
+    };
+    console.log(req.body);
+
+    res.send('You have declared an emergency for '+response.name+' for the following reason: '+response.reason )
+});
+
+app.post('/emergencyCancel',function(req,res){
+   res.redirect('/')
+});
 
 //-------SERVER LISTENING-------//
 

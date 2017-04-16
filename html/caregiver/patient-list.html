@@ -13,10 +13,11 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/colors.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="/testData.js"></script>
+
+
 </head>
 <body>
 
@@ -59,39 +60,9 @@
 
 <div class="container">
     <h1 class="text-center">Patient List</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <a href="/patient/JohnDoe">
-                    <div class="well">
-                        <img src="/logo100.png"> John Doe
-                    </div>
-                </a>
-                <a href="/patient/KarryForya">
-                    <div class="well">
-                        <img src="/logo100.png"> Karry Forya
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <a href="/patient/JaneDoe">
-                    <div class="well">
-                        <img src="/logo100.png"> Jane Doe
-                    </div>
-                </a>
-                <a href="/patient/link">
-                    <div class="well">
-                        <i class="fa fa-plus-square-o fa-4x"></i> New Patient
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <a href="/patient/BobSmith">
-                    <div class="well">
-                        <img src="/logo100.png"> Bob Smith
-                    </div>
-                </a>
-            </div>
+    <div class="container" >
+        <div class="row" id="patientList">
+
         </div>
     </div>
 </div>
@@ -105,5 +76,62 @@
         $("#includefooter").load("/footer.html");
     });
 </script>
+
+<script>
+    var patientList = patientList;
+    var patientListURLS = patientListURLs;
+
+
+    var myDiv = document.getElementById("patientList");
+
+    for (var i = 0; i < patientList.length; i++) {
+
+        var patientName = patientList[i];
+
+        var patientDev = document.createElement("div");
+        patientDev.setAttribute('class',"col-xs-12 col-sm-6 col-md-4 col-lg-4");
+
+        var patientLink = document.createElement("a");
+        patientLink.setAttribute("href",patientListURLS[i]);
+        patientDev.appendChild(patientLink);
+
+        var patientSubDev = document.createElement("div");
+        patientSubDev.setAttribute("class","well");
+        patientLink.appendChild(patientSubDev);
+
+        var patientImg = document.createElement("img");
+        patientImg.setAttribute("src","/profile2.png");
+        patientLink.appendChild(patientImg);
+        patientSubDev.appendChild(patientImg);
+        patientSubDev.append(patientName);
+
+
+        myDiv.appendChild(patientDev);
+
+    }
+
+    var addpatientDev = document.createElement("div");
+    addpatientDev.setAttribute('class',"col-xs-12 col-sm-6 col-md-4 col-lg-4");
+
+    var addpatientLink = document.createElement("a");
+    addpatientLink.setAttribute("href","/patient/link");
+    addpatientDev.appendChild(addpatientLink);
+
+    var addpatientSubDev = document.createElement("div");
+    addpatientSubDev.setAttribute("class","well");
+    addpatientLink.appendChild(addpatientSubDev);
+
+    var addpatientImg = document.createElement("img");
+    addpatientImg.setAttribute("src","/plusSign.png");
+    addpatientLink.appendChild(addpatientImg);
+    addpatientSubDev.appendChild(addpatientImg);
+    addpatientSubDev.append('Add a New Patient');
+
+    myDiv.appendChild(addpatientDev);
+
+
+</script>
+
+
 </body>
 </html>
