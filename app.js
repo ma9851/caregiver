@@ -18,44 +18,56 @@ router.get('/', function (req, res) {
     res.sendfile('./html/landing.html');
 });
 
-router.get('/landing',function(req,res){
+router.get('/landing', function (req, res) {
     res.sendfile('./html/landing.html');
 });
 
-router.get('/new-user-type',function(req,res){
-    res.sendfile('./html/create-account-type.html');
+router.get('/new-user-type', function (req, res) {
+    res.sendfile('./html/create-account/type.html');
 });
 
-router.get('/caregiver-create',function(req,res){
-    res.sendfile('./html/create-account-caregiver-form.html');
+router.get('/create-caregiver', function (req, res) {
+    res.sendfile('./html/create-account/caregiver-form.html');
 });
 
-router.get('/overview',function(req,res){
-    res.sendfile('./html/caregiver-overview.html')
+router.get('/overview', function (req, res) {
+    res.sendfile('./html/caregiver/overview.html')
 });
 
-router.get('/profile',function(req,res){
-    res.sendfile('./html/profile.html');
+router.get('/profile', function (req, res) {
+    res.sendfile('./html/caregiver/profile.html');
 });
 
-router.get('/messages',function(req,res){
-    res.sendfile('./html/caregiver-messages.html');
+router.get('/messages', function (req, res) {
+    res.sendfile('./html/caregiver/messages.html');
 });
 
-router.get('/patient-list',function(req,res){
-    res.sendfile('./html/caregiver-patient-list.html');
+router.get('/schedule', function (req, res) {
+    res.sendfile('./html/caregiver/schedule.html');
 });
 
-router.get('/schedule',function(req,res){
-    res.sendfile('./html/caregiver-schedule.html');
+router.get('/emergency', function (req, res) {
+    res.sendfile('./html/caregiver/emergency.html');
 });
 
-router.get('/schedule',function(req,res){
-    res.sendfile('./html/caregiver-schedule.html');
+router.get('/patient/all', function (req, res) {
+    res.sendfile('./html/caregiver/patient-list.html');
 });
 
-router.get('/emergency',function(req,res){
-    res.sendfile('./html/caregiver-emergency.html');
+router.get('/patient/link', function (req, res) {
+    res.sendfile('./html/caregiver/link-patient.html');
+});
+
+router.get('/patient/new', function (req, res) {
+    res.sendfile('./html/caregiver/patient-form.html');
+});
+
+router.get(/^\/patient\/(\w+)\/profile$/, function (req, res) {
+    res.sendfile('./html/patients/profile.html');
+});
+
+router.get(/^\/patient\/(\w+)$/, function (req, res) {
+    res.sendfile('./html/patients/view.html');
 });
 
 

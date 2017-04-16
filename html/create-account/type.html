@@ -28,7 +28,7 @@
         <h2>Choose your Account Type</h2>
         <br/>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <a href="/caregiver-create">
+            <a href="/create-caregiver">
                 <button type="button" class="btn btn-primary btn-lg">Caregiver</button>
             </a>
             <p>
@@ -44,9 +44,11 @@
                 they may not be around.
             </p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <button type="button" class="btn btn-warning btn-lg">Cancel</button>
-        </div>
+        <a href="/">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="button" class="btn btn-warning btn-lg">Cancel</button>
+            </div>
+        </a>
     </div>
 </div>
 
@@ -56,7 +58,7 @@
 <script src="//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js"></script>
 <script>
     $(function () {
-        $("#includefooter").load("footer.html");
+        $("#includefooter").load("/footer.html");
     });
 </script>
 </body>

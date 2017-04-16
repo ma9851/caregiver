@@ -7,16 +7,17 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Page Description">
     <meta name="author" content="Team Caregiver">
-    <title>Schedule</title>
+    <title>Patient List</title>
 
     <link href="//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="colors.css" rel="stylesheet">
+    <link href="/colors.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="testData.js"></script>
+
+
 </head>
 <body>
 
@@ -40,8 +41,8 @@
                 <li id="page-overview"><a href="/overview"><i class="fa fa-home fa-lg"></i></a></li>
                 <li id="page-profile"><a href="/profile">Profile</a></li>
                 <li id="page-messages"><a href="/messages">Messages</a></li>
-                <li id="page-patient-list"><a href="/patient-list">Patient List</a></li>
-                <li id="page-schedule" class="active"><a href="/schedule">Schedule</a></li>
+                <li id="page-patient-list" class="active"><a href="/patient/all">Patient List</a></li>
+                <li id="page-schedule"><a href="/schedule">Schedule</a></li>
                 <li id="page-notifications"><a href=""><i class="fa fa-bell"></i></a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
@@ -58,7 +59,12 @@
 </nav>
 
 <div class="container">
-    This is your schedule page
+    <h1 class="text-center">Patient List</h1>
+    <div class="container" >
+        <div class="row" id="patientList">
+
+        </div>
+    </div>
 </div>
 
 <div id="includefooter"></div>
@@ -67,8 +73,44 @@
 <script src="//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js"></script>
 <script>
     $(function () {
-        $("#includefooter").load("footer.html");
+        $("#includefooter").load("/footer.html");
     });
 </script>
+
+<script>
+    var patientList = patientListRAW;
+
+    console.log(patientList);
+
+    var myDiv = document.getElementById("patientList");
+
+    for (var i = 0; i < patientList.length; i++) {
+
+        var patientName = patientList[i];
+
+        var patientDev = document.createElement("div");
+        patientDev.setAttribute('class',"col-xs-12 col-sm-6 col-md-4 col-lg-4");
+
+        var patientLink = document.createElement("a");
+        patientLink.setAttribute("href","#");
+        patientDev.appendChild(patientLink);
+
+        var patientSubDev = document.createElement("div");
+        patientSubDev.setAttribute("class","well");
+        patientLink.appendChild(patientSubDev);
+
+        var patientImg = document.createElement("img");
+        patientImg.setAttribute("src","profile2.png");
+        patientLink.appendChild(patientImg);
+        patientSubDev.appendChild(patientImg);
+        patientSubDev.append(patientName);
+
+
+        myDiv.appendChild(patientDev);
+
+    }
+</script>
+
+
 </body>
 </html>
