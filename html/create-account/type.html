@@ -9,13 +9,10 @@
     <meta name="author" content="Team Caregiver">
     <title>Create Account Type</title>
 
-    <!-- Bootstrap -->
-    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/font-awesome.min.css" rel="stylesheet">
-    <link href="../CSS/extra.css" rel="stylesheet">
+    <link href="//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="colors.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respbootstrapd.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respbootstrapd.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -31,9 +28,12 @@
         <h2>Choose your Account Type</h2>
         <br/>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <button type="button" class="btn btn-primary btn-lg">Caregiver</button>
+            <a href="/create-caregiver">
+                <button type="button" class="btn btn-primary btn-lg">Caregiver</button>
+            </a>
             <p>
-                This type of account is for the home health aid and nurses alike. This will allow you to view a list of
+                This type of account is for the home health aid and nurses alike. This will allow you to view a list
+                of
                 your patients and log your daily task for them.
             </p>
         </div>
@@ -44,21 +44,21 @@
                 they may not be around.
             </p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <button type="button" class="btn btn-warning btn-lg">Cancel</button>
-        </div>
+        <a href="/">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="button" class="btn btn-warning btn-lg">Cancel</button>
+            </div>
+        </a>
     </div>
 </div>
 
 <div id="includefooter"></div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js"></script>
 <script>
     $(function () {
-        $("#includefooter").load("footer.html");
+        $("#includefooter").load("/footer.html");
     });
 </script>
 </body>

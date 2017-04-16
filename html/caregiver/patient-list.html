@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Page Description">
+    <meta name="author" content="Team Caregiver">
+    <title>Patient List</title>
+
+    <link href="//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/colors.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/overview">Caregiver</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li id="page-overview"><a href="/overview"><i class="fa fa-home fa-lg"></i></a></li>
+                <li id="page-profile"><a href="/profile">Profile</a></li>
+                <li id="page-messages"><a href="/messages">Messages</a></li>
+                <li id="page-patient-list" class="active"><a href="/patient/all">Patient List</a></li>
+                <li id="page-schedule"><a href="/schedule">Schedule</a></li>
+                <li id="page-notifications"><a href=""><i class="fa fa-bell"></i></a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="list-group-item-danger"><a href="/emergency">Emergency</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <h1 class="text-center">Patient List</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <a href="/patient/JohnDoe">
+                    <div class="well">
+                        <img src="/logo100.png"> John Doe
+                    </div>
+                </a>
+                <a href="/patient/KarryForya">
+                    <div class="well">
+                        <img src="/logo100.png"> Karry Forya
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <a href="/patient/JaneDoe">
+                    <div class="well">
+                        <img src="/logo100.png"> Jane Doe
+                    </div>
+                </a>
+                <a href="/patient/link">
+                    <div class="well">
+                        <i class="fa fa-plus-square-o fa-4x"></i> New Patient
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <a href="/patient/BobSmith">
+                    <div class="well">
+                        <img src="/logo100.png"> Bob Smith
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="includefooter"></div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $("#includefooter").load("/footer.html");
+    });
+</script>
+</body>
+</html>
