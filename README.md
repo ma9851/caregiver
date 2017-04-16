@@ -13,7 +13,10 @@ Install
 The server should just boot up if you did everything correctly
 
 To see the webpage
-1. Navigate to localhost:8888 
+1. Navigate to localhost:8888 in your browser
+
+Website was tested in Google Chrome
+No support was given to older browsers (ex IE)
 
 
 
