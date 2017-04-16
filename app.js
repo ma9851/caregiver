@@ -59,7 +59,7 @@ router.get('/patient/link', function (req, res) {
 });
 
 router.get('/patient/new', function (req, res) {
-    res.sendfile('./html/caregiver/patient-form.html');
+    res.sendfile('./html/create-account/patient-form.html');
 });
 
 router.get(/^\/patient\/(\w+)\/profile$/, function (req, res) {

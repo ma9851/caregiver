@@ -13,10 +13,23 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="colors.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="/testData.js"></script>
+    <script>
+        function addPatientToList() {
+
+
+            var firstName = document.getElementById('fname').value;
+            var lastName = document.getElementById('lname').value;
+
+            var name = firstName + ' ' + lastName;
+
+            addPatient(name);
+            alert("Patient:"+name+" has been successfully added to your patient list");
+
+        }
+    </script>
 </head>
 <body>
 
@@ -58,7 +71,7 @@
 </nav>
 
 <div class="container">
-    <form action="" method="post" role="form">
+    <form role="form">
         <legend>Create a New Patient Account</legend>
 
         <div class="form-group">
@@ -91,7 +104,7 @@
             </div>
         </div>
         <div class="row text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" onclick="addPatientToList()">Submit</button>
             <a href="/patient/all">
                 <button type="button" class="btn btn-default">Cancel</button>
             </a>

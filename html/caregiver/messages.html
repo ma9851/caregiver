@@ -14,10 +14,14 @@
     <link href="colors.css" rel="stylesheet">
     <link href="messages.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
+
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="/testData.js"></script>
+    <script>
+        setConvo();
+    </script>
+
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -69,14 +73,19 @@
                         </h4>
                         <p class="list-group-item-text"></p>
                     </a>
-                    <a href="#" class="list-group-item">
+                    <a href="#" class="list-group-item" onclick="setConvo()">
                         <h4 class="list-group-item-heading"><img src="logo20.png"> John Doe</h4>
                         <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed
                             diam
                             eget risus varius blandit.</p>
                     </a>
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading"><img src="logo20.png"> Karry Forya</h4>
+                    <a href="#" class="list-group-item" onclick="setConvo()">
+                        <h4 class="list-group-item-heading"><img src="logo20.png"> Bill Smith</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                            diam eget risus varius blandit.</p>
+                    </a>
+                    <a href="#" class="list-group-item" onclick="setConvo()">
+                        <h4 class="list-group-item-heading"><img src="logo20.png"> Jane Doe</h4>
                         <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed
                             diam eget risus varius blandit.</p>
                     </a>
@@ -89,32 +98,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><span id="active-conversation-name">None</span></div>
                 <div id="conversation" style="overflow-y:scroll; height:475px">
-                    <div class="message-bubble">
-                        <p class="text-muted">Matt Townsen</p>
-                        <p>Test message</p>
-                    </div>
-                    <div class="message-bubble">
-                        <p class="text-muted">Matt Townsen</p>
-                        <p>Test message</p>
-                    </div>
-                    <div class="message-bubble">
-                        <p class="text-muted">Matt Townsen</p>
-                        <p>Test message</p>
-                    </div>
-                    <div class="message-bubble">
-                        <p class="text-muted">Matt Townsen</p>
-                        <p>Test message</p>
-                    </div>
-                    <div class="message-bubble">
-                        <p class="text-muted">Matt Townsen</p>
-                        <p>Test message</p>
-                    </div>
+
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Message...">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Send</button>
+                            <input type="text" id="sendMessage" name="sendMessage" class="form-control" placeholder="Message...">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="sendMessage(document.getElementById('sendMessage').value)">Send</button>
                     </span>
                     </div>
                 </div>
@@ -146,6 +136,93 @@
         var objDiv = document.getElementById("conversation");
         objDiv.scrollTop = objDiv.scrollHeight;
     });
+
 </script>
+<script>
+
+    var first = 'John Doe';
+    setConvo();
+
+    function setConvo() {
+
+        first = document.getElementById("active-conversation-name").innerText;
+
+        if (first == 'John Doe') {
+            var patientMessages = messagesJohnDoe;
+            first = 'John Doe';
+            var caregiverResponse =  messagesCaregiverJohn;
+
+        } else if (first == 'Bill Smith') {
+            var patientMessages = messagesBillSmith;
+            var caregiverResponse =  messagesCaregiverJane;
+        } else {
+            var patientMessages = messagesJaneDoe;
+            var caregiverResponse =  messagesCaregiverBill;
+        }
+
+
+        var myDiv = document.getElementById("conversation");
+
+        while (myDiv.firstChild) {
+            myDiv.removeChild(myDiv.firstChild);
+        }
+
+        for (var i = 0; i < patientMessages.length; i++) {
+
+            //var patientName = patientList[i];
+
+            var chatBubbleDiv = document.createElement("div");
+            chatBubbleDiv.setAttribute('class', "message-bubble");
+
+            var chatBubbleName = document.createElement("p");
+            chatBubbleName.setAttribute("class", "text-muted");
+            chatBubbleName.append(first);
+            chatBubbleDiv.appendChild(chatBubbleName);
+
+            var chatBubbleMessage = document.createElement("p");
+            chatBubbleMessage.append(patientMessages[i]);
+            chatBubbleDiv.appendChild(chatBubbleMessage);
+
+            if(i != patientMessages.length-1 ) {
+
+                var chatBubbleName = document.createElement("p");
+                chatBubbleName.setAttribute("class", "text-muted");
+                chatBubbleName.append('Sarah');
+                chatBubbleDiv.appendChild(chatBubbleName);
+
+                var chatBubbleMessage = document.createElement("p");
+                chatBubbleMessage.append(caregiverResponse);
+                chatBubbleDiv.appendChild(chatBubbleMessage);
+            }
+
+            myDiv.appendChild(chatBubbleDiv);
+        }
+    }
+</script>
+
+<script>
+    function sendMessage(message){
+
+        var chatBubbleDiv = document.createElement("div");
+        chatBubbleDiv.setAttribute('class', "message-bubble");
+
+        var myDiv = document.getElementById("conversation");
+
+        var chatBubbleName = document.createElement("p");
+        chatBubbleName.setAttribute("class", "text-muted");
+        chatBubbleName.append('Sarah');
+        chatBubbleDiv.appendChild(chatBubbleName);
+
+        var chatBubbleMessage = document.createElement("p");
+        chatBubbleMessage.append(message);
+        chatBubbleDiv.appendChild(chatBubbleMessage);
+
+        myDiv.appendChild(chatBubbleDiv);
+
+        first = document.getElementById("active-conversation-name").innerText;
+
+    }
+</script>
+
 </body>
 </html>
