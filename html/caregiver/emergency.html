@@ -107,11 +107,12 @@
 
     var selectList = document.createElement("select");
     selectList.id = "name";
+    selectList.name = "name";
     myDiv.appendChild(selectList);
 
     for (var i = 0; i < patientList.length; i++) {
         var option = document.createElement("option");
-        option.value = i;
+        option.value = patientList[i];
         option.text = patientList[i];
         selectList.appendChild(option);
     }

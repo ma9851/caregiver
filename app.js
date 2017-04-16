@@ -114,6 +114,8 @@ app.post('/emergencySubmit',function(req,res){
       name:req.body.name,
       reason:req.body.reason
     };
+    console.log(req.body);
+
     res.send('You have declared an emergency for '+response.name+' for the following reason: '+response.reason )
 });
 
