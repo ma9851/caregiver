@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var router = express.Router();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(router);
 
 app.use(express.static('./html'));
@@ -75,52 +75,52 @@ router.get(/^\/patient\/(\w+)$/, function (req, res) {
 
 app.post('/loginForm', function (req, res) {
     var response = {
-        username:req.body.username,
-        password:req.body.password
+        username: req.body.username,
+        password: req.body.password
     };
 
     var caregiverAccounts = test_data.loginUsers;
 
-    for(var accountIndex in caregiverAccounts) {
+    for (var accountIndex in caregiverAccounts) {
         var account = caregiverAccounts[accountIndex];
-        if (response.username == account[0] && response.password == account[1]) {
+        if (response.username === account[0] && response.password === account[1]) {
             var login = true;
             break;
         }
     }
-    if(login){
+    if (login) {
         res.redirect('/overview')
-    }else{
+    } else {
         res.redirect('/')
     }
 
 
 });
 
-app.post('/createNewCaregiver',function(req,res){
-   var response = {
-       username:req.body.username,
-       password:req.body.password
-   };
+app.post('/createNewCaregiver', function (req, res) {
+    var response = {
+        username: req.body.username,
+        password: req.body.password
+    };
 
-   var newCaregiver = [response.username,response.password];
+    var newCaregiver = [response.username, response.password];
     test_data.loginUsers.push(newCaregiver);
     res.redirect('/');
 
 });
 
-app.post('/emergencySubmit',function(req,res){
+app.post('/emergencySubmit', function (req, res) {
     var response = {
-      name:req.body.name,
-      reason:req.body.reason
+        name: req.body.name,
+        reason: req.body.reason
     };
     console.log(req.body);
 
-    res.send('You have declared an emergency for '+response.name+' for the following reason: '+response.reason )
+    res.send('You have declared an emergency for ' + response.name + ' for the following reason: ' + response.reason)
 });
 
-app.post('/emergencyCancel',function(req,res){
-   res.redirect('/')
+app.post('/emergencyCancel', function (req, res) {
+    res.redirect('/overview')
 });
 
 //-------SERVER LISTENING-------//
