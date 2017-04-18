@@ -1,0 +1,62 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='description', content='Page Description')
+        meta(name='author', content='Team Caregiver')
+        title Create Caregiver Account
+        link(href='//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css', rel='stylesheet')
+        link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+        link(href='colors.css', rel='stylesheet')
+        //if lt IE 9
+          script(src='//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+          script(src='//oss.maxcdn.com/respond/1.4.2/respond.min.js')
+    body
+        .container
+            .page-header
+                h1 Caregiver
+            form(action='/createNewCaregiver', method='post', role='form')
+                legend Making a new Caregiver account
+                .form-group
+                    .row
+                        label.col-sm-2.control-label(for='fname') First name
+                        .col-sm-4
+                            input#fname.form-control(type='text', placeholder='First Name', required='')
+                        |
+                        label.col-sm-2.control-label(for='lname') Last name
+                        .col-sm-4
+                            input#lname.form-control(type='text', placeholder='Last Name', required='')
+                    .row
+                        label.col-sm-2.control-label(for='email') Email
+                        .col-sm-4
+                            input#email.form-control(type='email', name='email', placeholder='Email', required='')
+                        |
+                        label.col-sm-2.control-label(for='dob') Date of Birth
+                        .col-sm-4
+                            input#dob.form-control(type='date', required='')
+                    .row
+                        label.col-sm-2.control-label(for='phone') Phone Number
+                        .col-sm-4
+                            input#phone.form-control(type='tel', placeholder='XXX XXX XXXX', required='')
+                    .row
+                        label.col-sm-2.control-label(for='username') Username
+                        .col-sm-4
+                            input#username.form-control(type='text', name='username', required='')
+                        |
+                        label.col-sm-2.control-label(for='password') Password
+                        .col-sm-4
+                            input#password.form-control(type='password', name='password', required='')
+                .row.text-center
+                    button.btn.btn-primary(type='submit') Submit
+                    |
+                    a(href='/')
+                        button.btn.btn-default(type='button') Cancel
+        #includefooter
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+        script(src='//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js')
+        script.
+            $(function () {
+                $("#includefooter").load("/footer.html");
+            });

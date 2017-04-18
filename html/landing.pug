@@ -1,0 +1,48 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='description', content='Page Description')
+        meta(name='author', content='Team Caregiver')
+        title Caregiver
+        link(href='//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css', rel='stylesheet')
+        link(href='colors.css', rel='stylesheet')
+        //if lt IE 9
+          script(src='//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+          script(src='//oss.maxcdn.com/respond/1.4.2/respond.min.js')
+    body
+        .container
+            .page-header
+                h1 Welcome to Caregiver
+            .col-xs-12.col-sm-12.col-md-9.col-lg-9
+                .jumbotron
+                    .container
+                        p
+                            | We look forward to giving you an easy to use connection to your caregiver, patient or family. Our goal is to allow patients and caregivers alike a way to communicate and organize their daily affairs. If you already have an account, log in and get connected. If you would like to sign up, please click sign up on the right and fill out a short form to allow us to begin your caregiver experience.
+            .col-xs-12.col-sm-12.col-md-3.col-lg-3
+                form(action='/loginForm', method='POST')
+                    legend Sign In
+                    .form-group
+                        label(for='u') Username:
+                        |
+                        input#u.form-control(type='text', name='username', placeholder='Username')
+                    .form-group
+                        label(for='p') Password:
+                        |
+                        input#p.form-control(type='password', name='password', placeholder='Password')
+                    |
+                    button.btn.btn-block.btn-primary(type='submit') Sign In
+                br
+                p New User:
+                |
+                a(href='/new-user-type')
+                    button.btn.btn-block.button-link Create Account
+        #includefooter
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+        script(src='//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js')
+        script.
+            $(function () {
+                $("#includefooter").load("/footer.html");
+            });

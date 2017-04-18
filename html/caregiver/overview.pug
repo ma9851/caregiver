@@ -1,0 +1,122 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='description', content='Page Description')
+        meta(name='author', content='Team Caregiver')
+        title Overview
+        link(href='//d2c5utp5fpfikz.cloudfront.net/3_1_1/css/bootstrap.min.css', rel='stylesheet')
+        link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+        link(href='/colors.css', rel='stylesheet')
+        script(src='//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+        script(src='//oss.maxcdn.com/respond/1.4.2/respond.min.js')
+        script(src='testData.js')
+    body
+        nav.navbar.navbar-default
+            .container-fluid
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    |
+                    a.navbar-brand(href='#') Caregiver
+                .collapse.navbar-collapse.navbar-ex1-collapse
+                    ul.nav.navbar-nav
+                        li#page-overview.active
+                            a(href='/overview')
+                                i.fa.fa-home.fa-lg
+                        li#page-profile
+                            a(href='/profile') Profile
+                        li#page-messages
+                            a(href='/messages') Messages
+                        li#page-patient-list
+                            a(href='/patient/all') Patient List
+                        li#page-schedule
+                            a(href='/schedule') Schedule
+                        li#page-notifications
+                            a(href='')
+                                i.fa.fa-bell
+                        li#page-logout
+                            a(href='/') Logout
+                    form.navbar-form.navbar-left(role='search')
+                        .form-group
+                            input.form-control(type='text', placeholder='Search')
+                        |
+                        button.btn.btn-default(type='submit') Submit
+                    ul.nav.navbar-nav.navbar-right
+                        li.list-group-item-danger
+                            a(href='/emergency') Emergency
+        .container
+            .row
+                .hidden-xs.col-sm-2.col-md-2.col-lg-2.text-center
+                    img.img-responsive(src='/profile.png', height='auto', width='100%', alt='Profile Image')
+                    h2 Sarah
+                    |
+                    a(href='/profile')
+                        button.btn.btn-block.btn-primary Profile
+                .col-xs-12.col-sm-10.col-md-10.col-lg-10
+                    .row
+                        .col-xs-12.col-sm-12.col-md-6.col-lg-6.well(style='height: 200px;')
+                            h2.text-center(style='margin-top:0') Unread Messages
+                            .col-xs-12.col-sm-12.col-md-12.col-lg-12(style='overflow-y:scroll; height:95px')
+                                ul(style='list-style-type:none; padding-left: 0;')
+                                    li
+                                        a(href='/patient/JohnDoe')
+                                            img(src='/profile3.png')
+                                            |
+                                            b John Doe
+                                        p  I am feeling better, Ill be ok to eat lunch
+                            |
+                            a(href='/messages')
+                                button.btn.btn-block.btn-primary  Inbox
+                        .hidden-xs.hidden-sm.col-md-1.col-lg-1
+                        .col-xs-12.col-sm-12.col-md-5.col-lg-5.well(style='height: 200px;')
+                            h2.text-center(style='margin-top:0') Patient List
+                            .col-xs-12.col-sm-12.col-md-12.col-lg-12(style='overflow-y:scroll; height:95px')
+                                ul#patientList(style='list-style-type:none; padding-left: 0;')
+                            |
+                            a(href='/patient/link')
+                                button.btn.btn-block.btn-primary  Add New Patient
+                    .row
+                        .col-xs-12.col-sm-12.col-md-7.col-lg-7.well(style='height: 400px;')
+                            h2.text-center(style='margin-top:0') Calendar
+                        .hidden-xs.hidden-sm.col-md-1.col-lg-1
+                        .col-xs-12.col-sm-12.col-md-4.col-lg-4.well(style='height: 400px;')
+                            h2.text-center(style='margin-top:0') Today&apos;s Events
+                            div(style='overflow-y:scroll; height:395px')
+                                table.table.table-condensed
+                                    tr
+                                        td
+                                            b Task 1 : 10:30am
+                                            p Give medication to Jane Doe
+                                    tr
+                                        td
+                                            b Task 2 : 12:45pm
+                                            p Feed Bill Smith his lunch
+        #includefooter
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+        script(src='//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js')
+        script.
+            $(function () {
+                $("#includefooter").load("/footer.html");
+            });
+        script.
+            var patientList = patientList;
+            var myList = document.getElementById("patientList");
+            for (var i = 0; i < patientList.length; i++) {
+                var patientName = patientList[i];
+                var listItem = document.createElement("li");
+                var itemLink = document.createElement("a");
+                itemLink.setAttribute("href",'#');
+                var itemImg = document.createElement("img");
+                itemImg.setAttribute("src","profile3.png");
+                itemLink.appendChild(itemImg);
+                listItem.appendChild(itemLink);
+                itemLink.append(patientName);
+                listItem.appendChild(itemLink);
+                myList.appendChild(listItem);
+            }
