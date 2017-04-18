@@ -12,38 +12,5 @@ html(lang='en')
             .container
                 #patientList.row
         include ../include/footer
-        script.
-            var patientList = patientList;
-            var patientListURLS = patientListURLs;
-            var myDiv = document.getElementById("patientList");
-            for (var i = 0; i < patientList.length; i++) {
-                var patientName = patientList[i];
-                var patientDev = document.createElement("div");
-                patientDev.setAttribute('class', "col-xs-12 col-sm-6 col-md-4 col-lg-4");
-                var patientLink = document.createElement("a");
-                patientLink.setAttribute("href", patientListURLS[i]);
-                patientDev.appendChild(patientLink);
-                var patientSubDev = document.createElement("div");
-                patientSubDev.setAttribute("class", "well");
-                patientLink.appendChild(patientSubDev);
-                var patientImg = document.createElement("img");
-                patientImg.setAttribute("src", "/profile2.png");
-                patientLink.appendChild(patientImg);
-                patientSubDev.appendChild(patientImg);
-                patientSubDev.append(patientName);
-                myDiv.appendChild(patientDev);
-            }
-            var addpatientDev = document.createElement("div");
-            addpatientDev.setAttribute('class', "col-xs-12 col-sm-6 col-md-4 col-lg-4");
-            var addpatientLink = document.createElement("a");
-            addpatientLink.setAttribute("href", "/patient/link");
-            addpatientDev.appendChild(addpatientLink);
-            var addpatientSubDev = document.createElement("div");
-            addpatientSubDev.setAttribute("class", "well");
-            addpatientLink.appendChild(addpatientSubDev);
-            var addpatientImg = document.createElement("img");
-            addpatientImg.setAttribute("src", "/plusSign.png");
-            addpatientLink.appendChild(addpatientImg);
-            addpatientSubDev.appendChild(addpatientImg);
-            addpatientSubDev.append('Add a New Patient');
-            myDiv.appendChild(addpatientDev);
+        script
+            include ../include/patient-list.js
