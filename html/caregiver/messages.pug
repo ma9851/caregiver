@@ -64,20 +64,22 @@ html(lang='en')
             });
         script.
             function setConvo() {
-                first = document.getElementById("active-conversation-name").innerText;
+                var first = document.getElementById("active-conversation-name").innerText;
+                var patientMessages;
+                var caregiverResponse;
                 if (first === 'John Doe') {
-                    var patientMessages = messagesJohnDoe;
+                    patientMessages = messagesJohnDoe;
                     first = 'John Doe';
-                    var caregiverResponse = messagesCaregiverJohn;
+                    caregiverResponse = messagesCaregiverJohn;
                 } else if (first === 'Bill Smith') {
-                    var patientMessages = messagesBillSmith;
-                    var caregiverResponse = messagesCaregiverJane;
+                    patientMessages = messagesBillSmith;
+                    caregiverResponse = messagesCaregiverJane;
                 } else if (first === 'Jane Doe') {
-                    var patientMessages = messagesJaneDoe;
-                    var caregiverResponse = messagesCaregiverBill;
+                    patientMessages = messagesJaneDoe;
+                    caregiverResponse = messagesCaregiverBill;
                 } else {
-                    var patientMessages = [];
-                    var caregiverResponse = [];
+                    patientMessages = [];
+                    caregiverResponse = [];
                 }
                 var myDiv = document.getElementById("conversation");
                 while (myDiv.firstChild) {
@@ -98,11 +100,11 @@ html(lang='en')
                         myDiv.appendChild(chatBubbleDiv);
                         chatBubbleDiv = document.createElement("div");
                         chatBubbleDiv.setAttribute('class', "message-bubble");
-                        var chatBubbleName = document.createElement("p");
+                        chatBubbleName = document.createElement("p");
                         chatBubbleName.setAttribute("class", "text-muted");
                         chatBubbleName.append('Sarah');
                         chatBubbleDiv.appendChild(chatBubbleName);
-                        var chatBubbleMessage = document.createElement("p");
+                        chatBubbleMessage = document.createElement("p");
                         chatBubbleMessage.append(caregiverResponse);
                         chatBubbleDiv.appendChild(chatBubbleMessage);
                     }
@@ -122,5 +124,5 @@ html(lang='en')
                 chatBubbleMessage.append(message);
                 chatBubbleDiv.appendChild(chatBubbleMessage);
                 myDiv.appendChild(chatBubbleDiv);
-                first = document.getElementById("active-conversation-name").innerText;
+                var first = document.getElementById("active-conversation-name").innerText;
             }
