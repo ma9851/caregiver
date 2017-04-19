@@ -12,7 +12,7 @@
     <link href="/colors.css" rel="stylesheet">
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <link href="messages.css" rel="stylesheet">
+    <link href="/messages.css" rel="stylesheet">
     <script src="/testData.js"></script>
   </head>
   <body>
@@ -48,12 +48,13 @@
         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 well" style="height: 600px;">
           <h3 style="margin-top:0;">Conversations</h3>
           <div style="overflow-y:scroll; height:525px;">
-            <div class="list-group" id="conversation-list"><a class="list-group-item" href="#">
+            <div class="list-group" id="conversation-list"><a class="list-group-item">
                 <h4 class="list-group-item-heading"><i class="fa fa-plus-square-o fa-lg"></i> New Conversation</h4>
-                <p class="list-group-item-text"></p></a><a class="list-group-item" href="#">
-                <h4 class="list-group-item-heading"><img src="logo20.png"> John Doe</h4></a><a class="list-group-item" href="#">
-                <h4 class="list-group-item-heading"><img src="logo20.png"> Bill Smith</h4></a><a class="list-group-item" href="#">
-                <h4 class="list-group-item-heading"><img src="logo20.png"> Jane Doe</h4></a></div>
+                <p class="list-group-item-text"></p></a><a class="list-group-item" id="JohnDoe">
+                <h4 class="list-group-item-heading"><img src="/logo20.png"> John Doe</h4></a><a class="list-group-item" id="BillSmith">
+                <h4 class="list-group-item-heading"><img src="/logo20.png"> Bill Smith</h4></a><a class="list-group-item" id="JaneDoe">
+                <h4 class="list-group-item-heading"><img src="/logo20.png"> Jane Doe</h4></a><a class="list-group-item" id="KarryForya">
+                <h4 class="list-group-item-heading"><img src="/logo20.png"> Karry Forya</h4></a></div>
           </div>
         </div>
         <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
@@ -62,7 +63,7 @@
             <div class="panel-heading"><span id="active-conversation-name">None</span></div>
             <div id="conversation" style="overflow-y:scroll; height:475px;"></div>
             <div class="panel-footer">
-              <div class="input-group">
+              <div class="input-group" onkeypress="checkSendMessage(event)">
                 <input class="form-control" id="sendMessage" type="text" name="sendMessage" placeholder="Message..."><span class="input-group-btn">
                   <button class="btn btn-default" type="button" onclick="sendMessage(document.getElementById('sendMessage').value)">Send</button></span>
               </div>
@@ -80,9 +81,16 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//d2c5utp5fpfikz.cloudfront.net/3_1_1/js/bootstrap.min.js"></script>
     <script>$(function () {
-    var first = $('#conversation-list').children()[1];
-    $(first).addClass('active');
-    $('#active-conversation-name').text($(first).children()[0].innerHTML.replace(/<.*>\s*/g, ""));
+    if (window.location.toString().match(/\/messages\/(\w+)/g) === null) {
+        var first = $('#conversation-list').children()[1];
+        $(first).addClass('active');
+        $('#active-conversation-name').text($(first).children()[0].innerHTML.replace(/<.*>\s*/g, ""));
+    } else {
+        var patientID = window.location.toString().match(/\/messages\/(\w+)/g).toString().replace("/messages/", "");
+        var messageRef = $('#' + patientID);
+        messageRef.addClass('active');
+        $('#active-conversation-name').text(messageRef.children()[0].innerHTML.replace(/<.*>\s*/g, ""));
+    }
     var objDiv = document.getElementById("conversation");
     objDiv.scrollTop = objDiv.scrollHeight;
     setConvo();
@@ -96,20 +104,23 @@ $('#conversation-list').find('> a').on('click', function (e) {
     var objDiv = document.getElementById("conversation");
     objDiv.scrollTop = objDiv.scrollHeight;
 });
+
 function setConvo() {
-    var first = document.getElementById("active-conversation-name").innerText;
+    var name = document.getElementById("active-conversation-name").innerText;
     var patientMessages;
     var caregiverResponse;
-    if (first === 'John Doe') {
+    if (name === 'John Doe') {
         patientMessages = messagesJohnDoe;
-        first = 'John Doe';
-        caregiverResponse = messagesCaregiverJohn;
-    } else if (first === 'Bill Smith') {
+        caregiverResponse = messagesCaregiverJohnDoe;
+    } else if (name === 'Bill Smith') {
         patientMessages = messagesBillSmith;
-        caregiverResponse = messagesCaregiverJane;
-    } else if (first === 'Jane Doe') {
+        caregiverResponse = messagesCaregiverBillSmith;
+    } else if (name === 'Jane Doe') {
         patientMessages = messagesJaneDoe;
-        caregiverResponse = messagesCaregiverBill;
+        caregiverResponse = messagesCaregiverJaneDoe;
+    } else if (name === 'Karry Forya') {
+        patientMessages = messagesKarryForya;
+        caregiverResponse = messagesCaregiverKarryForya;
     } else {
         patientMessages = [];
         caregiverResponse = [];
@@ -119,12 +130,11 @@ function setConvo() {
         myDiv.removeChild(myDiv.firstChild);
     }
     for (var i = 0; i < patientMessages.length; i++) {
-        //var patientName = patientList[i];
         var chatBubbleDiv = document.createElement("div");
         chatBubbleDiv.setAttribute('class', "message-bubble");
         var chatBubbleName = document.createElement("p");
         chatBubbleName.setAttribute("class", "text-muted");
-        chatBubbleName.append(first);
+        chatBubbleName.append(name);
         chatBubbleDiv.appendChild(chatBubbleName);
         var chatBubbleMessage = document.createElement("p");
         chatBubbleMessage.append(patientMessages[i]);
@@ -143,7 +153,9 @@ function setConvo() {
         }
         myDiv.appendChild(chatBubbleDiv);
     }
+    document.getElementById('sendMessage').value = "";
 }
+
 function sendMessage(message) {
     var chatBubbleDiv = document.createElement("div");
     chatBubbleDiv.setAttribute('class', "message-bubble");
@@ -158,6 +170,13 @@ function sendMessage(message) {
     myDiv.appendChild(chatBubbleDiv);
     var first = document.getElementById("active-conversation-name").innerText;
 }
+
+function checkSendMessage(e) {
+    if (e && e.keyCode === 13) {
+        sendMessage(document.getElementById('sendMessage').value);
+    }
+}
+
     </script>
   </body>
 </html>

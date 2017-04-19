@@ -1,7 +1,14 @@
 $(function () {
-    var first = $('#conversation-list').children()[1];
-    $(first).addClass('active');
-    $('#active-conversation-name').text($(first).children()[0].innerHTML.replace(/<.*>\s*/g, ""));
+    if (window.location.toString().match(/\/messages\/(\w+)/g) === null) {
+        var first = $('#conversation-list').children()[1];
+        $(first).addClass('active');
+        $('#active-conversation-name').text($(first).children()[0].innerHTML.replace(/<.*>\s*/g, ""));
+    } else {
+        var patientID = window.location.toString().match(/\/messages\/(\w+)/g).toString().replace("/messages/", "");
+        var messageRef = $('#' + patientID);
+        messageRef.addClass('active');
+        $('#active-conversation-name').text(messageRef.children()[0].innerHTML.replace(/<.*>\s*/g, ""));
+    }
     var objDiv = document.getElementById("conversation");
     objDiv.scrollTop = objDiv.scrollHeight;
     setConvo();
@@ -15,20 +22,23 @@ $('#conversation-list').find('> a').on('click', function (e) {
     var objDiv = document.getElementById("conversation");
     objDiv.scrollTop = objDiv.scrollHeight;
 });
+
 function setConvo() {
-    var first = document.getElementById("active-conversation-name").innerText;
+    var name = document.getElementById("active-conversation-name").innerText;
     var patientMessages;
     var caregiverResponse;
-    if (first === 'John Doe') {
+    if (name === 'John Doe') {
         patientMessages = messagesJohnDoe;
-        first = 'John Doe';
-        caregiverResponse = messagesCaregiverJohn;
-    } else if (first === 'Bill Smith') {
+        caregiverResponse = messagesCaregiverJohnDoe;
+    } else if (name === 'Bill Smith') {
         patientMessages = messagesBillSmith;
-        caregiverResponse = messagesCaregiverJane;
-    } else if (first === 'Jane Doe') {
+        caregiverResponse = messagesCaregiverBillSmith;
+    } else if (name === 'Jane Doe') {
         patientMessages = messagesJaneDoe;
-        caregiverResponse = messagesCaregiverBill;
+        caregiverResponse = messagesCaregiverJaneDoe;
+    } else if (name === 'Karry Forya') {
+        patientMessages = messagesKarryForya;
+        caregiverResponse = messagesCaregiverKarryForya;
     } else {
         patientMessages = [];
         caregiverResponse = [];
@@ -38,12 +48,11 @@ function setConvo() {
         myDiv.removeChild(myDiv.firstChild);
     }
     for (var i = 0; i < patientMessages.length; i++) {
-        //var patientName = patientList[i];
         var chatBubbleDiv = document.createElement("div");
         chatBubbleDiv.setAttribute('class', "message-bubble");
         var chatBubbleName = document.createElement("p");
         chatBubbleName.setAttribute("class", "text-muted");
-        chatBubbleName.append(first);
+        chatBubbleName.append(name);
         chatBubbleDiv.appendChild(chatBubbleName);
         var chatBubbleMessage = document.createElement("p");
         chatBubbleMessage.append(patientMessages[i]);
@@ -62,7 +71,9 @@ function setConvo() {
         }
         myDiv.appendChild(chatBubbleDiv);
     }
+    document.getElementById('sendMessage').value = "";
 }
+
 function sendMessage(message) {
     var chatBubbleDiv = document.createElement("div");
     chatBubbleDiv.setAttribute('class', "message-bubble");
@@ -76,4 +87,10 @@ function sendMessage(message) {
     chatBubbleDiv.appendChild(chatBubbleMessage);
     myDiv.appendChild(chatBubbleDiv);
     var first = document.getElementById("active-conversation-name").innerText;
+}
+
+function checkSendMessage(e) {
+    if (e && e.keyCode === 13) {
+        sendMessage(document.getElementById('sendMessage').value);
+    }
 }

@@ -13,8 +13,11 @@ html(lang='en')
                     h2
                         span.patientName
                     |
-                    a.patientProfile(href='')
-                        button.btn.btn-block.btn-primary Profile
+                    .btn-group-lg
+                        a.patientProfile(href='')
+                            button.btn.btn-default.btn-block(type='button') Profile
+                        a.patientMessages(href='')
+                            button.btn.btn-default.btn-block(type='button') Messages
                 .col-xs-12.col-sm-10.col-md-10.col-lg-10
                     .row
                         .col-xs-12.col-sm-12.col-md-6.col-lg-6.well(style='height: 625px;')

@@ -15,6 +15,10 @@ $(function () {
     for (i = 0; i < x.length; i++) {
         x[i].href = "/patient/" + patientInfo.id + "/profile";
     }
+    x = document.getElementsByClassName("patientMessages");
+    for (i = 0; i < x.length; i++) {
+        x[i].href = "/messages/" + patientInfo.id ;
+    }
     i = 1;
     patientInfo.tasks.forEach(function (ele) {
         var liNode = document.createElement("li");

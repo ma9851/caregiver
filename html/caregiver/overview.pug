@@ -3,7 +3,7 @@ html(lang='en')
     head
         - var title = "Overview"
         include ../include/header
-        script(src='testData.js')
+        script(src='/testData.js')
     body
         - var navbar = { overview: true }
         include ../include/navbar
@@ -22,7 +22,7 @@ html(lang='en')
                             .col-xs-12.col-sm-12.col-md-12.col-lg-12(style='overflow-y:scroll; height:95px')
                                 ul(style='list-style-type:none; padding-left: 0;')
                                     li
-                                        a(href='/patient/JohnDoe')
+                                        a(href='/messages/JohnDoe')
                                             img(src='/profile3.png')
                                             |
                                             b John Doe
@@ -59,15 +59,14 @@ html(lang='en')
             var patientList = patientList;
             var myList = document.getElementById("patientList");
             for (var i = 0; i < patientList.length; i++) {
-                var patientName = patientList[i];
                 var listItem = document.createElement("li");
                 var itemLink = document.createElement("a");
-                itemLink.setAttribute("href", '');
+                itemLink.setAttribute("href", patientListURLs[i]);
                 var itemImg = document.createElement("img");
-                itemImg.setAttribute("src", "profile3.png");
+                itemImg.setAttribute("src", "/profile3.png");
                 itemLink.appendChild(itemImg);
                 listItem.appendChild(itemLink);
-                itemLink.append(patientName);
+                itemLink.append(patientList[i]);
                 listItem.appendChild(itemLink);
                 myList.appendChild(listItem);
             }

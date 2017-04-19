@@ -12,7 +12,7 @@
     <link href="/colors.css" rel="stylesheet">
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <script src="testData.js"></script>
+    <script src="/testData.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -54,7 +54,7 @@
               <h2 class="text-center" style="margin-top:0;">Unread Messages</h2>
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="overflow-y:scroll; height:95px;">
                 <ul style="list-style-type:none; padding-left: 0;">
-                  <li><a href="/patient/JohnDoe"><img src="/profile3.png"><b>John Doe</b></a>
+                  <li><a href="/messages/JohnDoe"><img src="/profile3.png"><b>John Doe</b></a>
                     <p> I am feeling better, Ill be ok to eat lunch</p>
                   </li>
                 </ul>
@@ -108,15 +108,14 @@
       var patientList = patientList;
       var myList = document.getElementById("patientList");
       for (var i = 0; i < patientList.length; i++) {
-          var patientName = patientList[i];
           var listItem = document.createElement("li");
           var itemLink = document.createElement("a");
-          itemLink.setAttribute("href", '');
+          itemLink.setAttribute("href", patientListURLs[i]);
           var itemImg = document.createElement("img");
-          itemImg.setAttribute("src", "profile3.png");
+          itemImg.setAttribute("src", "/profile3.png");
           itemLink.appendChild(itemImg);
           listItem.appendChild(itemLink);
-          itemLink.append(patientName);
+          itemLink.append(patientList[i]);
           listItem.appendChild(itemLink);
           myList.appendChild(listItem);
       }
