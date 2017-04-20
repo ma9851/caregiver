@@ -44,13 +44,17 @@
     </nav>
     <script>
       var messagesPatientBool = window.location.toString().match(/\/messages\/(\w+)$/g) !== null;
-      var profilePatientBool = window.location.toString().match(/\/patient\/(\w+)$/g) !== null;
+      var viewPatientBool = window.location.toString().match(/\/patient\/(\w+)$/g) !== null;
+      var profilePatientBool = window.location.toString().match(/\/patient\/(\w+)\/profile$/g) !== null;
       var patientID;
-      if (messagesPatientBool || profilePatientBool) {
+      if (messagesPatientBool || profilePatientBool || viewPatientBool) {
           if (messagesPatientBool) {
               patientID = window.location.toString().match(/\/messages\/(\w+)/g).toString().replace("/messages/", "");
               document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
           } else if (profilePatientBool) {
+              patientID = window.location.toString().match(/\/patient\/(\w+)/g).toString().replace("/patient/", "");
+              document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
+          } else if (viewPatientBool) {
               patientID = window.location.toString().match(/\/patient\/(\w+)/g).toString().replace("/patient/", "");
               document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
           }

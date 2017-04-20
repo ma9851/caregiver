@@ -18,11 +18,11 @@ app.use(express.static('./model'));
 //-------ROUTING-------//
 router.get('/', function (req, res) {
     console.log("Got a GET request for the homepage");
-    res.render('landing.pug');
+    res.render('landing');
 });
 
 router.get('/landing', function (req, res) {
-    res.render('landing.pug');
+    res.render('landing');
 });
 
 router.get('/new-user-type', function (req, res) {

@@ -9,10 +9,6 @@ $(function () {
     for (i = 0; i < x.length; i++) {
         x[i].innerHTML = patientInfo.name;
     }
-    x = document.getElementsByClassName("patientProfile");
-    for (i = 0; i < x.length; i++) {
-        x[i].href = "/patient/" + patientInfo.id + "/profile";
-    }
     x = document.getElementsByClassName("patientBack");
     for (i = 0; i < x.length; i++) {
         x[i].href = "/patient/" + patientInfo.id;
