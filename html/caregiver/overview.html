@@ -37,11 +37,27 @@
             <button class="btn btn-default" type="submit">Submit</button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li class="list-group-item-danger"><a href="/emergency">Emergency</a></li>
+            <li class="list-group-item-danger"><a href="" id="emergencyLink">Emergency</a></li>
           </ul>
         </div>
       </div>
     </nav>
+    <script>
+      var messagesPatientBool = window.location.toString().match(/\/messages\/(\w+)$/g) !== null;
+      var profilePatientBool = window.location.toString().match(/\/patient\/(\w+)$/g) !== null;
+      var patientID;
+      if (messagesPatientBool || profilePatientBool) {
+          if (messagesPatientBool) {
+              patientID = window.location.toString().match(/\/messages\/(\w+)/g).toString().replace("/messages/", "");
+              document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
+          } else if (profilePatientBool) {
+              patientID = window.location.toString().match(/\/patient\/(\w+)/g).toString().replace("/patient/", "");
+              document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
+          }
+      } else {
+          document.getElementById("emergencyLink").setAttribute('href', '/emergency');
+      }
+    </script>
     <div class="container">
       <div class="row">
         <div class="hidden-xs col-sm-2 col-md-2 col-lg-2 text-center"><img class="img-responsive" src="/profile.png" height="auto" width="100%" alt="Profile Image">

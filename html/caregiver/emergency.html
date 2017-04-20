@@ -37,11 +37,27 @@
             <button class="btn btn-default" type="submit">Submit</button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li class="list-group-item-danger"><a href="/emergency">Emergency</a></li>
+            <li class="list-group-item-danger"><a href="" id="emergencyLink">Emergency</a></li>
           </ul>
         </div>
       </div>
     </nav>
+    <script>
+      var messagesPatientBool = window.location.toString().match(/\/messages\/(\w+)$/g) !== null;
+      var profilePatientBool = window.location.toString().match(/\/patient\/(\w+)$/g) !== null;
+      var patientID;
+      if (messagesPatientBool || profilePatientBool) {
+          if (messagesPatientBool) {
+              patientID = window.location.toString().match(/\/messages\/(\w+)/g).toString().replace("/messages/", "");
+              document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
+          } else if (profilePatientBool) {
+              patientID = window.location.toString().match(/\/patient\/(\w+)/g).toString().replace("/patient/", "");
+              document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
+          }
+      } else {
+          document.getElementById("emergencyLink").setAttribute('href', '/emergency');
+      }
+    </script>
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -86,11 +102,29 @@
       selectList.id = "name";
       selectList.name = "name";
       myDiv.appendChild(selectList);
-      for (var i = 0; i < patientList.length; i++) {
+      if (window.location.toString().match(/\/emergency\/(\w+)/g) === null) {
+          for (var i = 0; i < patientList.length; i++) {
+              var option = document.createElement("option");
+              option.value = patientList[i];
+              option.text = patientList[i];
+              selectList.appendChild(option);
+          }
+      } else {
+          var patientID = window.location.toString().match(/\/emergency\/(\w+)/g).toString().replace("/emergency/", "");
+          var patientName = patientID.split(/(?=[A-Z])/).join(" ");
           var option = document.createElement("option");
+          var i = patientList.indexOf(patientName);
           option.value = patientList[i];
           option.text = patientList[i];
           selectList.appendChild(option);
+          for (i = 0; i < patientList.length; i++) {
+              if (i !== patientList.indexOf(patientName)) {
+                  option = document.createElement("option");
+                  option.value = patientList[i];
+                  option.text = patientList[i];
+                  selectList.appendChild(option);
+              }
+          }
       }
     </script>
   </body>

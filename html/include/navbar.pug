@@ -54,4 +54,19 @@ nav.navbar.navbar-default
                 button.btn.btn-default(type='submit') Submit
             ul.nav.navbar-nav.navbar-right
                 li.list-group-item-danger
-                    a(href='/emergency') Emergency
+                    a(href='')#emergencyLink Emergency
+script.
+    var messagesPatientBool = window.location.toString().match(/\/messages\/(\w+)$/g) !== null;
+    var profilePatientBool = window.location.toString().match(/\/patient\/(\w+)$/g) !== null;
+    var patientID;
+    if (messagesPatientBool || profilePatientBool) {
+        if (messagesPatientBool) {
+            patientID = window.location.toString().match(/\/messages\/(\w+)/g).toString().replace("/messages/", "");
+            document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
+        } else if (profilePatientBool) {
+            patientID = window.location.toString().match(/\/patient\/(\w+)/g).toString().replace("/patient/", "");
+            document.getElementById("emergencyLink").setAttribute('href', '/emergency/' + patientID);
+        }
+    } else {
+        document.getElementById("emergencyLink").setAttribute('href', '/emergency');
+    }

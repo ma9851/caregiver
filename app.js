@@ -57,6 +57,10 @@ router.get('/emergency', function (req, res) {
     res.render('caregiver/emergency');
 });
 
+router.get(/^\/emergency\/(\w+)$/, function (req, res) {
+    res.render('caregiver/emergency');
+});
+
 router.get('/patient/all', function (req, res) {
     res.render('caregiver/patient-list');
 });
