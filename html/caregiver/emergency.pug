@@ -46,9 +46,11 @@ html(lang='en')
                 var patientName = patientID.split(/(?=[A-Z])/).join(" ");
                 var option = document.createElement("option");
                 var i = patientList.indexOf(patientName);
-                option.value = patientList[i];
-                option.text = patientList[i];
-                selectList.appendChild(option);
+                if (i !== -1) {
+                    option.value = patientList[i];
+                    option.text = patientList[i];
+                    selectList.appendChild(option);
+                }
                 for (i = 0; i < patientList.length; i++) {
                     if (i !== patientList.indexOf(patientName)) {
                         option = document.createElement("option");

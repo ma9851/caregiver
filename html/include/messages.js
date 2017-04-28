@@ -86,7 +86,7 @@ function sendMessage(message) {
     chatBubbleMessage.append(message);
     chatBubbleDiv.appendChild(chatBubbleMessage);
     myDiv.appendChild(chatBubbleDiv);
-    var first = document.getElementById("active-conversation-name").innerText;
+    document.getElementById('sendMessage').value = "";
 }
 
 function checkSendMessage(e) {
