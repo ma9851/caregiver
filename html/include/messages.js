@@ -21,6 +21,7 @@ $('#conversation-list').find('> a').on('click', function (e) {
     setConvo();
     var objDiv = document.getElementById("conversation");
     objDiv.scrollTop = objDiv.scrollHeight;
+    $("#emergencyLink").attr("href", "/emergency/" + $(this).children()[0].innerHTML.replace(/<.*>\s*/g, "").replace(/\s/g, ""));
 });
 
 function setConvo() {
