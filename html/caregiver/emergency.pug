@@ -1,0 +1,62 @@
+doctype html
+html(lang='en')
+    head
+        - var title = "Emergency"
+        include ../include/header
+        script(src='/testData.js')
+    body
+        - var navbar = {}
+        include ../include/navbar
+        .container
+            .row
+                .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                    form(method='POST', role='form')
+                        legend Emergency Alert Entry Screen
+                        .row
+                            .form-group
+                                label.col-sm-2.control-label Name
+                                #selectList.col-sm-10
+                        .row
+                            .form-group
+                                label.col-sm-2.control-label(for='reason') Reason
+                                .col-sm-10
+                                    input#reason.form-control(type='text', name='reason', placeholder='Reason')
+                        .row
+                            .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                                button.btn.btn-primary(type='submit', formaction='/emergencySubmit') Submit
+                                |
+                                button.btn.btn-default(type='submit', formaction='/emergencyCancel') Cancel
+        include ../include/footer
+        script.
+            var patientList = patientList;
+            var myDiv = document.getElementById("selectList");
+            var selectList = document.createElement("select");
+            selectList.id = "name";
+            selectList.name = "name";
+            myDiv.appendChild(selectList);
+            if (window.location.toString().match(/\/emergency\/(\w+)/g) === null) {
+                for (var i = 0; i < patientList.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = patientList[i];
+                    option.text = patientList[i];
+                    selectList.appendChild(option);
+                }
+            } else {
+                var patientID = window.location.toString().match(/\/emergency\/(\w+)/g).toString().replace("/emergency/", "");
+                var patientName = patientID.split(/(?=[A-Z])/).join(" ");
+                var option = document.createElement("option");
+                var i = patientList.indexOf(patientName);
+                if (i !== -1) {
+                    option.value = patientList[i];
+                    option.text = patientList[i];
+                    selectList.appendChild(option);
+                }
+                for (i = 0; i < patientList.length; i++) {
+                    if (i !== patientList.indexOf(patientName)) {
+                        option = document.createElement("option");
+                        option.value = patientList[i];
+                        option.text = patientList[i];
+                        selectList.appendChild(option);
+                    }
+                }
+            }

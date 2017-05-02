@@ -1,0 +1,76 @@
+doctype html
+html(lang='en')
+    head
+        - var title = "Overview"
+        include ../include/header
+        script(src='/testData.js')
+    body
+        - var navbar = { overview: true }
+        include ../include/navbar
+        .container
+            .row
+                .hidden-xs.col-sm-2.col-md-2.col-lg-2.text-center
+                    img.img-responsive(src='/profile.png', height='auto', width='100%', alt='Profile Image')
+                    h1 Sarah
+                    h4 Caregiver
+                    |
+                    a(href='/profile')
+                        button.btn.btn-block.btn-primary Profile
+                    br
+                    a(href='/')
+                        button.btn.btn-block.btn-default Logout
+                .col-xs-12.col-sm-10.col-md-10.col-lg-10
+                    .row
+                        .col-xs-12.col-sm-12.col-md-6.col-lg-6.well(style='height: 200px;')
+                            h2.text-center(style='margin-top:0') Unread Messages
+                            .col-xs-12.col-sm-12.col-md-12.col-lg-12(style='overflow-y:scroll; height:95px')
+                                ul(style='list-style-type:none; padding-left: 0;')
+                                    li
+                                        a(href='/messages/JohnDoe')
+                                            img(src='/profile3.png')
+                                            |
+                                            b John Doe
+                                        p  I am feeling better, Ill be ok to eat lunch
+                            |
+                            a(href='/messages')
+                                button.btn.btn-block.btn-primary  Inbox
+                        .hidden-xs.hidden-sm.col-md-1.col-lg-1
+                        .col-xs-12.col-sm-12.col-md-5.col-lg-5.well(style='height: 200px;')
+                            h2.text-center(style='margin-top:0') Patient List
+                            .col-xs-12.col-sm-12.col-md-12.col-lg-12(style='overflow-y:scroll; height:95px')
+                                ul#patientList(style='list-style-type:none; padding-left: 0;')
+                            |
+                            a(href='/patient/link')
+                                button.btn.btn-block.btn-primary  Add New Patient
+                    .row
+                        .col-xs-12.col-sm-12.col-md-7.col-lg-7.well(style='height: 400px;')
+                            h2.text-center(style='margin-top:0') Calendar
+                        .hidden-xs.hidden-sm.col-md-1.col-lg-1
+                        .col-xs-12.col-sm-12.col-md-4.col-lg-4.well(style='height: 400px;')
+                            h2.text-center(style='margin-top:0') Today&apos;s Events
+                            div(style='overflow-y:scroll; height:320px')
+                                table.table.table-condensed
+                                    tr
+                                        td
+                                            b Task 1 : 10:30am
+                                            p Give medication to Jane Doe
+                                    tr
+                                        td
+                                            b Task 2 : 12:45pm
+                                            p Feed Bill Smith his lunch
+        include ../include/footer
+        script.
+            var patientList = patientList;
+            var myList = document.getElementById("patientList");
+            for (var i = 0; i < patientList.length; i++) {
+                var listItem = document.createElement("li");
+                var itemLink = document.createElement("a");
+                itemLink.setAttribute("href", patientListURLs[i]);
+                var itemImg = document.createElement("img");
+                itemImg.setAttribute("src", "/profile3.png");
+                itemLink.appendChild(itemImg);
+                listItem.appendChild(itemLink);
+                itemLink.append(patientList[i]);
+                listItem.appendChild(itemLink);
+                myList.appendChild(listItem);
+            }

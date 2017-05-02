@@ -1,0 +1,10 @@
+doctype html
+html(lang='en')
+    head
+        - var title = "Profile"
+        include ../include/header
+    body
+        - var navbar = { profile: true }
+        include ../include/navbar
+        .container  This is your profile
+        include ../include/footer

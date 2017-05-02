@@ -9,12 +9,9 @@ module.exports = {
 
   validateUser: function(){
     if(response.username == 'caregiver' && response.password == 'password'){
-      res.sendfile('./html/overview.html')
+      res.render('./html/overview')
     }else{
       res.send('Login Failed')
     }
   }
-
-
-
 };

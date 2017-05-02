@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+    head
+        - var title = ""
+        include ../include/header
+    body
+        - var navbar = { patients: true }
+        include ../include/navbar
+        .container
+            .row
+                .hidden-xs.col-sm-2.col-md-2.col-lg-2.text-center
+                    img.img-responsive(src='/logo.png', height='auto', width='100%', alt='Profile Image')
+                    h2
+                        span.patientName
+                    |
+                    .btn-group-lg
+                        a.patientBack(href='')
+                            button.btn.btn-default.btn-block(type='button') Back
+
+                .col-xs-12.col-sm-10.col-md-10.col-lg-10
+                    .row
+                        .col-xs-12.col-sm-12.col-md-12.col-lg-12.well(style='height: 625px;')
+                            h2.text-center(style='margin-top:0') Details
+                            .col-xs-12.col-sm-12.col-md-12.col-lg-12(style='overflow-y:scroll; height:495px;')
+                                ul#detailCollection(style='list-style-type:none; padding-left: 0;')
+        include ../include/footer
+        script
+            include ../include/patient-profile.js

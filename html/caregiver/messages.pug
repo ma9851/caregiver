@@ -1,0 +1,52 @@
+doctype html
+html(lang='en')
+    head
+        - var title = "Messages"
+        include ../include/header
+        link(href='/messages.css', rel='stylesheet')
+        script(src='/testData.js')
+    body
+        - var navbar = { messages: true }
+        include ../include/navbar
+        .container
+            .row
+                .col-xs-12.col-sm-12.col-md-5.col-lg-5.well(style='height: 600px;')
+                    h3(style='margin-top:0') Conversations
+                    div(style='overflow-y:scroll; height:525px')
+                        #conversation-list.list-group
+                            a.list-group-item
+                                h4.list-group-item-heading
+                                    i.fa.fa-plus-square-o.fa-lg
+                                    |  New Conversation
+                                p.list-group-item-text
+                            a.list-group-item#JohnDoe
+                                h4.list-group-item-heading
+                                    img(src='/logo20.png')
+                                    |  John Doe
+                            a.list-group-item#BillSmith
+                                h4.list-group-item-heading
+                                    img(src='/logo20.png')
+                                    |  Bill Smith
+                            a.list-group-item#JaneDoe
+                                h4.list-group-item-heading
+                                    img(src='/logo20.png')
+                                    |  Jane Doe
+                            a.list-group-item#KarryForya
+                                h4.list-group-item-heading
+                                    img(src='/logo20.png')
+                                    |  Karry Forya
+                .hidden-xs.hidden-sm.col-md-1.col-lg-1
+                .col-xs-12.col-sm-12.col-md-6.col-lg-6.well(style='height: 600px;')
+                    .panel.panel-default
+                        .panel-heading
+                            span#active-conversation-name None
+                        #conversation(style='overflow-y:scroll; height:475px')
+                        .panel-footer
+                            .input-group(onkeypress="checkSendMessage(event)")
+                                input#sendMessage.form-control(type='text', name='sendMessage', placeholder='Message...')
+                                |
+                                span.input-group-btn
+                                    button.btn.btn-default(type='button', onclick="sendMessage(document.getElementById('sendMessage').value)") Send
+        include ../include/footer
+        script
+            include ../include/messages.js

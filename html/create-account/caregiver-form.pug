@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+    head
+        - var title = "Create Caregiver Account"
+        include ../include/header
+    body
+        .container
+            .page-header
+                h1 Caregiver
+            form(action='/createNewCaregiver', method='post', role='form')
+                legend Making a new Caregiver account
+                .form-group
+                    .row
+                        label.col-sm-2.control-label(for='fname') First name
+                        .col-sm-4
+                            input#fname.form-control(type='text', placeholder='First Name', required='')
+                        |
+                        label.col-sm-2.control-label(for='lname') Last name
+                        .col-sm-4
+                            input#lname.form-control(type='text', placeholder='Last Name', required='')
+                    .row
+                        label.col-sm-2.control-label(for='email') Email
+                        .col-sm-4
+                            input#email.form-control(type='email', name='email', placeholder='Email', required='')
+                        |
+                        label.col-sm-2.control-label(for='dob') Date of Birth
+                        .col-sm-4
+                            input#dob.form-control(type='date', required='')
+                    .row
+                        label.col-sm-2.control-label(for='phone') Phone Number
+                        .col-sm-4
+                            input#phone.form-control(type='tel', placeholder='XXX XXX XXXX', required='')
+                    .row
+                        label.col-sm-2.control-label(for='username') Username
+                        .col-sm-4
+                            input#username.form-control(type='text', name='username', required='')
+                        |
+                        label.col-sm-2.control-label(for='password') Password
+                        .col-sm-4
+                            input#password.form-control(type='password', name='password', required='')
+                .row.text-center
+                    button.btn.btn-primary(type='submit') Submit
+                    |
+                    a(href='/')
+                        button.btn.btn-default(type='button') Cancel
+        include ../include/footer

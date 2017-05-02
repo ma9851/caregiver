@@ -1,0 +1,16 @@
+doctype html
+html(lang='en')
+    head
+        - var title = "Patient List"
+        include ../include/header
+        script(src='/testData.js')
+    body
+        - var navbar = { patients: true }
+        include ../include/navbar
+        .container
+            h1.text-center Patient List
+            .container
+                #patientList.row
+        include ../include/footer
+        script
+            include ../include/patient-list.js

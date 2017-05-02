@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+    head
+        - var title = "Overview"
+        include include/header
+    body
+        .container
+            .page-header
+                h1 Welcome to Caregiver
+            .col-xs-12.col-sm-12.col-md-9.col-lg-9
+                .jumbotron
+                    .container
+                        p
+                            | We look forward to giving you an easy to use connection to your caregiver, patient or family. Our goal is to allow patients and caregivers alike a way to communicate and organize their daily affairs. If you already have an account, log in and get connected. If you would like to sign up, please click sign up on the right and fill out a short form to allow us to begin your caregiver experience.
+            .col-xs-12.col-sm-12.col-md-3.col-lg-3
+                form(action='/loginForm', method='POST')
+                    legend Sign In
+                    .form-group
+                        label(for='u') Username:
+                        |
+                        input#u.form-control(type='text', name='username', placeholder='Username')
+                    .form-group
+                        label(for='p') Password:
+                        |
+                        input#p.form-control(type='password', name='password', placeholder='Password')
+                    |
+                    button.btn.btn-block.btn-primary(type='submit') Sign In
+                br
+                p New User:
+                |
+                a(href='/new-user-type')
+                    button.btn.btn-block.button-link Create Account
+        include include/footer
