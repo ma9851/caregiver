@@ -17,7 +17,11 @@ $(function () {
     }
     x = document.getElementsByClassName("patientMessages");
     for (i = 0; i < x.length; i++) {
-        x[i].href = "/messages/" + patientInfo.id ;
+        x[i].href = "/messages/" + patientInfo.id;
+    }
+    x = document.getElementsByClassName("patientEmergency");
+    for (i = 0; i < x.length; i++) {
+        x[i].href = "/emergency/" + patientInfo.id;
     }
     i = 1;
     patientInfo.tasks.forEach(function (ele) {
